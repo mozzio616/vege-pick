@@ -39,7 +39,7 @@ def create_code():
     req = {
         "merchantPaymentId": merchantPaymentId,
         "codeType": "ORDER_QR",
-        "redirectUrl": "http://127.0.0.1:5000/thanks",
+        "redirectUrl": "http://vege-pick.vercel.app/thanks",
         "redirectType":"WEB_LINK",
         "orderDescription":"Vege Pick",
         "orderItems": [{
