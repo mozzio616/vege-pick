@@ -9,6 +9,7 @@ QRcode(app)
 API_KEY = os.environ['PP_API_KEY']
 API_SECRET = os.environ['PP_API_SECRET']
 MERCHANT_ID = os.environ['PP_MERCHANT_ID']
+REDIRECT_URL = os.environ['PP_REDIRECT_URL']
 
 client = paypayopa.Client(auth=(API_KEY, API_SECRET), production_mode=False)
 client.set_assume_merchant(MERCHANT_ID)
@@ -19,7 +20,7 @@ def create_merchant_payment_id():
 
 @app.route('/')
 def index():
-    return render_template('menu.html')
+    return render_template('index.html')
 
 @app.route('/menu')
 def menu():
@@ -39,7 +40,7 @@ def create_code():
     req = {
         "merchantPaymentId": merchantPaymentId,
         "codeType": "ORDER_QR",
-        "redirectUrl": "http://vege-pick.vercel.app/thanks",
+        "redirectUrl": REDIRECT_URL,
         "redirectType":"WEB_LINK",
         "orderDescription":"Vege Pick",
         "orderItems": [{
