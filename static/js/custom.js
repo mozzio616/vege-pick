@@ -47,11 +47,10 @@ function myMap() {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(35.63339, 139.66166),
             icon: 'static/images/marker.png',
-            map: map,
-            url: 'http://127.0.0.1:5000/menu'
+            map: map
         });
         var infoWindow = new google.maps.InfoWindow({
-            content: '<div class="googleMap"><a href="http://127.0.0.1:5000/menu">VP駒沢大学駅</a></div>'
+            content: '<div class="googleMap"><a href="menu?item=1234">VP駒沢大学駅</a></div>'
         });
         marker.addListener('click', function(){
             infoWindow.open(map, marker);
