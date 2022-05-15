@@ -43,7 +43,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index">
+          <a class="navbar-brand" href="{{ url_for('index') }}">
             <span>
               Veggie Pick
             </span>
@@ -56,16 +56,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item active">
-                <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="menu">Menu</a>
+                <a class="nav-link" href="{{ url_for('search') }}">Serach</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="thanks">About</a>
+                <a class="nav-link" href="{{ url_for('menu') }}">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="book">Book Table</a>
+                <a class="nav-link" href="{{ url_for('thanks') }}">About</a>
               </li>
             </ul>
             <div class="user_option">

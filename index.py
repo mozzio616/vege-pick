@@ -22,6 +22,10 @@ def create_merchant_payment_id():
 def index():
     return render_template('index.html')
 
+@app.route('/search')
+def search():
+    return render_template('search.html')
+
 @app.route('/menu')
 def menu():
     return render_template('menu.html')

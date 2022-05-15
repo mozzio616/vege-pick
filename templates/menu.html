@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="">
 
-  <title> Feane </title>
+  <title> Veggie Pick </title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
@@ -57,14 +57,14 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('index') }}">Home </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('search') }}">Search</a>
+              </li>
               <li class="nav-item active">
                 <a class="nav-link" href="{{ url_for('menu') }}">Menu <span class="sr-only">(current)</span> </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('thanks') }}">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('book') }}">Book Table</a>
               </li>
             </ul>
             <div class="user_option">
@@ -149,6 +149,7 @@
         <h2>
           Komazawa Sta. 1
         </h2>
+        <h4>駒沢大学駅1</h4>
       </div>
 
       <ul class="filters_menu">
@@ -166,11 +167,11 @@
                 </div>
                 <div class="detail-box">
                   <h5>
-                    Veggie Box 001
+                    せたがやそだち 1
                   </h5>
-                  <!--<p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>-->
+                  <p>
+                    ロッカー番号：1<br>世田谷で育った新鮮な取れたて野菜の詰め合わせです。
+                  </p>
                   <div class="options">
                     <h6>
                       &yen500
@@ -242,11 +243,11 @@
                 </div>
                 <div class="detail-box">
                   <h5>
-                    Veggie Box 002
+                    せたがやそだち 2
                   </h5>
-                  <!--<p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>-->
+                  <p>
+                    ロッカー番号：2<br>世田谷で育った新鮮な取れたて野菜の詰め合わせです。
+                  </p>
                   <div class="options">
                     <h6>
                       &yen500
@@ -318,11 +319,11 @@
                 </div>
                 <div class="detail-box">
                   <h5>
-                    Veggie Box 003
+                    せたがやそだち 3
                   </h5>
-                  <!--<p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>-->
+                  <p>
+                    ロッカー番号：3<br>世田谷で育った新鮮な取れたて野菜の詰め合わせです。
+                  </p>
                   <div class="options">
                     <h6>
                       &yen500
@@ -888,7 +889,7 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Feane
+              Veggie Pick
             </a>
             <p>
               Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
