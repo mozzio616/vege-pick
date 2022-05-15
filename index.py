@@ -32,7 +32,7 @@ def thanks():
 
 @app.route('/book')
 def book():
-    return render_template('menu.html')
+    return render_template('book.html')
 
 @app.route('/code', methods=['GET'])
 def create_code():
