@@ -35,26 +35,92 @@ $(document).ready(function() {
   });
 
 /** google_map js **/
+var map;
+var marker = [];
+var infoWindow = [];
+var markerData = [
+    {
+        name: '駒沢大学',
+        lat: 35.63339,
+        lng: 139.66166,
+        icon: 'static/images/marker.png',
+        locationId: '1001'
+    }, {
+        name: '新町保育園',
+        lat: 35.62664,
+        lng: 139.65360,
+        icon: 'static/images/marker.png',
+        locationId: '1002'
+    }, {
+        name: '深沢小学校',
+        lat: 35.627579,
+        lng: 139.652410,
+        icon: 'static/images/marker.png',
+        locationId: '1003'
+    }, {
+        name: '駒沢公園3号売店',
+        lat: 35.627498,
+        lng: 139.658775,
+        icon: 'static/images/marker.png',
+        locationId: '1004'
+    }, {
+        name: 'Mr.FARMER 駒沢公園店',
+        lat: 35.62810,
+        lng: 139.65667,
+        icon: 'static/images/marker.png',
+        locationId: '1005'
+    }, {
+        name: '駒沢病院',
+        lat: 35.63391,
+        lng: 139.66060,
+        icon: 'static/images/marker.png',
+        locationId: '1006'
+    }, {
+        name: '駒沢小学校',
+        lat: 35.63324,
+        lng: 139.65795,
+        icon: 'static/images/marker.png',
+        locationId: '1007'
+    }, {
+        name: '駒沢バッティングスタジアム',
+        lat: 35.62250,
+        lng: 139.65666,
+        icon: 'static/images/marker.png',
+        locationId: '1008'
+    }
+];
+
+function markers(map) {
+    for (var i = 0; i < markerData.length; i++) {
+        markerLatLng = new google.maps.LatLng({ lat: markerData[i]['lat'], lng: markerData[i]['lng']});
+        marker[i] = new google.maps.Marker({
+            position: markerLatLng,
+            map: map,
+            icon: markerData[i]['icon']
+        });
+        infoWindow[i] = new google.maps.InfoWindow({
+            content: '<div class="googleMap"><a href="/items?locationId=' + markerData[i]['locationId'] + '">' + markerData[i]['name'] + '</a></div>' 
+        });
+        markerEvent(i);
+    };
+}
+
+function markerEvent(i) {
+    marker[i].addListener('click', function() { // マーカーをクリックしたとき
+      infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+  });
+}
+
 function myMap() {
     function success(pos) {
         var lat = pos.coords.latitude;
         var lng = pos.coords.longitude;
         var latlng = new google.maps.LatLng(lat, lng);
         var map = new google.maps.Map(document.getElementById("googleMap"), {
-            zoom: 17,
+            zoom: 15,
             center: latlng
         });
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(35.63339, 139.66166),
-            icon: 'static/images/marker.png',
-            map: map
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content: '<div class="googleMap"><a href="menu?item=1234">VP駒沢大学駅</a></div>'
-        });
-        marker.addListener('click', function(){
-            infoWindow.open(map, marker);
-        });
+        markers(map);
     }
     function fail(error) {
         alert('位置情報の取得に失敗しました');
@@ -63,18 +129,7 @@ function myMap() {
             zoom: 10,
             center: latlng
         });
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(35.63339, 139.66166),
-            icon: 'static/images/marker.png',
-            map: map,
-            url: 'http://127.0.0.1:5000/menu'
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content: '<div class="googleMap"><a href="http://127.0.0.1:5000/menu">VP駒沢大学駅</a></div>'
-        });
-        marker.addListener('click', function(){
-            infoWindow.open(map, marker);
-        });
+        markers(map);
     }
     navigator.geolocation.getCurrentPosition(success, fail);
 }

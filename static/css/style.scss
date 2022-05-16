@@ -554,6 +554,27 @@ a:focus {
       }
     }
 
+    .options2 {
+      display: flex;
+      justify-content: space-between;
+
+      a {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background: $primary2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+          width: 18px;
+          height: auto;
+          fill: $white;
+        }
+      }
+    }
+
     &:hover {
       .img-box {
         img {

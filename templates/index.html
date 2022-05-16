@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="">
 
-  <title> Feane </title>
+  <title> Pick a Local </title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
@@ -45,7 +45,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="{{ url_for('index') }}">
             <span>
-              Veggie Pick
+              Pick a Local
             </span>
           </a>
 
@@ -58,18 +58,18 @@
               <li class="nav-item active">
                 <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('search') }}">Serach</a>
-              </li>
-              <li class="nav-item">
+              <!--<li class="nav-item">
+                <a class="nav-link" href="{{ url_for('search') }}">Find Your Local</a>
+              </li>-->
+              <!--<li class="nav-item">
                 <a class="nav-link" href="{{ url_for('menu') }}">Menu</a>
-              </li>
+              </li>-->
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('thanks') }}">About</a>
+                <a class="nav-link" href="{{ url_for('about') }}">About</a>
               </li>
             </ul>
             <div class="user_option">
-              <a href="" class="user_link">
+              <!--<a href="" class="user_link">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
               <a class="cart_link" href="#">
@@ -125,14 +125,14 @@
                   <g>
                   </g>
                 </svg>
-              </a>
-              <form class="form-inline">
+              </a>-->
+              <!--<form class="form-inline">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
-              </form>
-              <a href="" class="order_online">
-                Order Online
+              </form>-->
+              <a href="{{ url_for('search') }}" class="order_online">
+                FIND YOUR LOCAL
               </a>
             </div>
           </div>
@@ -142,30 +142,30 @@
     <!-- end header section -->
     <!-- slider section -->
     <section class="slider_section ">
-      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+      <!--<div id="customCarousel1" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div class="carousel-item active">-->
             <div class="container ">
               <div class="row">
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fresh Local Vegetables
+                      Why Go Local?
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                      あなたの街で採れた新鮮な野菜や果物をあなたの食卓に。<br>仕事帰りや子供のお迎え、ペットの散歩、ジムでのトレーニング帰りなど、街角に設置されたスマートロッカーを見つけて、ぜひ地元の農産物を手に取ってください。
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
-                        Order Now
+                        FIND YOUR LOCAL
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="carousel-item ">
+          <!--</div>-->
+          <!--<div class="carousel-item ">
             <div class="container ">
               <div class="row">
                 <div class="col-md-7 col-lg-6 ">
@@ -207,15 +207,15 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="container">
+        </div>-->
+        <!--<div class="container">
           <ol class="carousel-indicators">
             <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
             <li data-target="#customCarousel1" data-slide-to="1"></li>
             <li data-target="#customCarousel1" data-slide-to="2"></li>
           </ol>
-        </div>
-      </div>
+        </div>-->
+      <!--</div>-->
 
     </section>
     <!-- end slider section -->
@@ -374,7 +374,7 @@
 
   <!-- food section -->
 
-  <section class="food_section layout_padding-bottom">
+  <!--<section class="food_section layout_padding-bottom">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
@@ -396,7 +396,6 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <!-- <img src="{{ url_for('static', filename='images/f1.png') }}" alt=""> -->
                   <img src="{{ url_for('static', filename='images/v1.png') }}" alt="">
                 </div>
                 <div class="detail-box">
@@ -473,7 +472,6 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <!-- <img src="{{ url_for('static', filename='images/f2.png') }}" alt=""> -->
                   <img src="{{ url_for('static', filename='images/v2.png') }}" alt="">
                 </div>
                 <div class="detail-box">
@@ -550,7 +548,6 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <!-- <img src="{{ url_for('static', filename='images/f3.png') }}" alt=""> -->
                   <img src="{{ url_for('static', filename='images/v3.png') }}" alt="">
 
                 </div>
@@ -1088,13 +1085,13 @@
         </a>
       </div>
     </div>
-  </section>
+  </section>-->
 
   <!-- end food section -->
 
   <!-- about section -->
 
-  <section class="about_section layout_padding">
+  <!--<section class="about_section layout_padding">
     <div class="container  ">
 
       <div class="row">
@@ -1123,7 +1120,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>-->
 
   <!-- end about section -->
 
@@ -1132,11 +1129,11 @@
     <div class="container">
       <div class="heading_container">
         <h2>
-          Book A Table
+          Find Your Local
         </h2>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <!--<div class="col-md-6">
           <div class="form_container">
             <form action="">
               <div>
@@ -1177,8 +1174,8 @@
               </div>
             </form>
           </div>
-        </div>
-        <div class="col-md-6">
+        </div>-->
+        <div class="col-md-12">
           <div class="map_container ">
             <div id="googleMap"></div>
           </div>
@@ -1190,7 +1187,7 @@
 
   <!-- client section -->
 
-  <section class="client_section layout_padding-bottom">
+  <!--<section class="client_section layout_padding-bottom">
     <div class="container">
       <div class="heading_container heading_center psudo_white_primary mb_45">
         <h2>
@@ -1238,7 +1235,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>-->
 
   <!-- end client section -->
 
@@ -1261,7 +1258,7 @@
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                  Call +81 1234567890
                 </span>
               </a>
               <a href="">
@@ -1276,7 +1273,7 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Feane
+              Pick a Local
             </a>
             <p>
               Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
@@ -1314,10 +1311,8 @@
       </div>
       <div class="footer-info">
         <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a><br><br>
-          &copy; <span id="displayYear"></span> Distributed By
-          <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+          &copy; <span id="displayYear"></span> 
+          <a href="">Pick a Local inc.</a> All Rights Reserved<br><br>
         </p>
       </div>
     </div>
