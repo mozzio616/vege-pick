@@ -92,7 +92,7 @@ var markerData = [
 
 function markers(map) {
     for (var i = 0; i < markerData.length; i++) {
-        alert(i)
+        alert(i);
         markerLatLng = new google.maps.LatLng({ lat: markerData[i]['lat'], lng: markerData[i]['lng']});
         marker[i] = new google.maps.Marker({
             position: markerLatLng,
@@ -122,6 +122,7 @@ function myMap() {
             zoom: 15,
             center: latlng
         });
+        alert('HERE');
         markers(map);
     }
     function fail(error) {
