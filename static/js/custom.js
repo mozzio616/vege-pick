@@ -92,6 +92,7 @@ var markerData = [
 
 function markers(map) {
     for (var i = 0; i < markerData.length; i++) {
+        alert(i)
         markerLatLng = new google.maps.LatLng({ lat: markerData[i]['lat'], lng: markerData[i]['lng']});
         marker[i] = new google.maps.Marker({
             position: markerLatLng,
@@ -101,6 +102,7 @@ function markers(map) {
         infoWindow[i] = new google.maps.InfoWindow({
             content: '<div class="googleMap"><a href="/items?locationId=' + markerData[i]['locationId'] + '">' + markerData[i]['name'] + '</a></div>' 
         });
+
         markerEvent(i);
     };
 }
