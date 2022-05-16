@@ -22,13 +22,13 @@ def create_merchant_payment_id():
 def index():
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/search')
 def search():
     return render_template('search.html')
-
-@app.route('/menu')
-def menu():
-    return render_template('menu.html')
 
 @app.route('/items')
 def items():
@@ -46,22 +46,6 @@ def items():
             return render_template('items.html', data=data[i])
         else:
             return redirect('/search')
-
-@app.route('/thanks')
-def thanks():
-    return render_template('thanks.html')
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-@app.route('/sold')
-def sold():
-    return render_template('sold.html')
-
-@app.route('/book')
-def book():
-    return render_template('book.html')
 
 @app.route('/code', methods=['GET'])
 def create_code():
@@ -119,6 +103,14 @@ def create_code():
                 return redirect('/search')
         else:
             return redirect('/search')
+
+@app.route('/thanks')
+def thanks():
+    return render_template('thanks.html')
+
+@app.route('/sold')
+def sold():
+    return render_template('sold.html')
 
 data = [
     {
@@ -243,7 +235,7 @@ data = [
         'lockerItems': [
             {
                 'lockerNo': 1,
-                'itemId': '1001001',
+                'itemId': '1002001',
                 'itemName': 'せたがやそだち キャベツ 1玉',
                 'itemDescription': '世田谷で育った新鮮なキャベツです。',
                 'itemPrice': 200,
@@ -252,7 +244,7 @@ data = [
             },
             {
                 'lockerNo': 2,
-                'itemId': '1001002',
+                'itemId': '1002002',
                 'itemName': 'せたがやそだち キャベツ 1玉',
                 'itemDescription': '世田谷で育った新鮮なキャベツです。',
                 'itemPrice': 200,
@@ -261,7 +253,7 @@ data = [
             },
             {
                 'lockerNo': 3,
-                'itemId': '1001003',
+                'itemId': '1002003',
                 'itemName': 'せたがやそだち キャベツ 1玉',
                 'itemDescription': '世田谷で育った新鮮なキャベツです。',
                 'itemPrice': 200,
@@ -270,7 +262,7 @@ data = [
             },
             {
                 'lockerNo': 4,
-                'itemId': '1001004',
+                'itemId': '1002004',
                 'itemName': 'せたがやそだち トマト 大3個',
                 'itemDescription': '世田谷で育った新鮮なトマトです。',
                 'itemPrice': 300,
@@ -279,7 +271,7 @@ data = [
             },
             {
                 'lockerNo': 5,
-                'itemId': '1001005',
+                'itemId': '1002005',
                 'itemName': 'せたがやそだち トマト 大3個',
                 'itemDescription': '世田谷で育った新鮮なトマトです。',
                 'itemPrice': 300,
@@ -288,7 +280,7 @@ data = [
             },
             {
                 'lockerNo': 6,
-                'itemId': '1001006',
+                'itemId': '1002006',
                 'itemName': 'せたがやそだち トマト 大3個',
                 'itemDescription': '世田谷で育った新鮮なトマトです。',
                 'itemPrice': 300,
@@ -297,7 +289,7 @@ data = [
             },
             {
                 'lockerNo': 7,
-                'itemId': '1001007',
+                'itemId': '1002007',
                 'itemName': 'せたがやそだち たまねぎ 中3個',
                 'itemDescription': '世田谷で育った新鮮な玉ねぎです。',
                 'itemPrice': 300,
@@ -306,7 +298,7 @@ data = [
             },
             {
                 'lockerNo': 8,
-                'itemId': '1001008',
+                'itemId': '1002008',
                 'itemName': 'せたがやそだち たまねぎ 中3個',
                 'itemDescription': '世田谷で育った新鮮な玉ねぎです。',
                 'itemPrice': 300,
@@ -315,7 +307,7 @@ data = [
             },
             {
                 'lockerNo': 9,
-                'itemId': '1001009',
+                'itemId': '1002009',
                 'itemName': 'せたがやそだち たまねぎ 中3個',
                 'itemDescription': '世田谷で育った新鮮な玉ねぎです。',
                 'itemPrice': 300,
@@ -324,7 +316,7 @@ data = [
             },
             {
                 'lockerNo': 10,
-                'itemId': '1001010',
+                'itemId': '1002010',
                 'itemName': 'せたがやそだち 詰め合わせ',
                 'itemDescription': 'カレーにぴったりな、じゃがいも（中3個）、にんじん（1本）、たまねぎ（中3個）のセットです。',
                 'itemPrice': 500,
@@ -333,7 +325,7 @@ data = [
             },
             {
                 'lockerNo': 11,
-                'itemId': '1001011',
+                'itemId': '1002011',
                 'itemName': 'せたがやそだち 詰め合わせ',
                 'itemDescription': 'カレーにぴったりな、じゃがいも（中3個）、にんじん（1本）、たまねぎ（中3個）のセットです。',
                 'itemPrice': 500,
@@ -342,7 +334,7 @@ data = [
             },
             {
                 'lockerNo': 12,
-                'itemId': '1001012',
+                'itemId': '1002012',
                 'itemName': 'せたがやそだち 詰め合わせ',
                 'itemDescription': 'カレーにぴったりな、じゃがいも（中3個）、にんじん（1本）、たまねぎ（中3個）のセットです。',
                 'itemPrice': 500,
@@ -358,7 +350,7 @@ data = [
         'lockerItems': [
             {
                 'lockerNo': 1,
-                'itemId': '1001001',
+                'itemId': '1003001',
                 'itemName': 'せたがやそだち キャベツ 1玉',
                 'itemDescription': '世田谷で育った新鮮なキャベツです。',
                 'itemPrice': 200,
@@ -367,7 +359,7 @@ data = [
             },
             {
                 'lockerNo': 2,
-                'itemId': '1001002',
+                'itemId': '1003002',
                 'itemName': 'せたがやそだち キャベツ 1玉',
                 'itemDescription': '世田谷で育った新鮮なキャベツです。',
                 'itemPrice': 200,
@@ -376,7 +368,7 @@ data = [
             },
             {
                 'lockerNo': 3,
-                'itemId': '1001003',
+                'itemId': '1003003',
                 'itemName': 'せたがやそだち キャベツ 1玉',
                 'itemDescription': '世田谷で育った新鮮なキャベツです。',
                 'itemPrice': 200,
@@ -385,7 +377,7 @@ data = [
             },
             {
                 'lockerNo': 4,
-                'itemId': '1001004',
+                'itemId': '1003004',
                 'itemName': 'せたがやそだち トマト 大3個',
                 'itemDescription': '世田谷で育った新鮮なトマトです。',
                 'itemPrice': 300,
@@ -394,7 +386,7 @@ data = [
             },
             {
                 'lockerNo': 5,
-                'itemId': '1001005',
+                'itemId': '1003005',
                 'itemName': 'せたがやそだち トマト 大3個',
                 'itemDescription': '世田谷で育った新鮮なトマトです。',
                 'itemPrice': 300,
@@ -403,7 +395,7 @@ data = [
             },
             {
                 'lockerNo': 6,
-                'itemId': '1001006',
+                'itemId': '1003006',
                 'itemName': 'せたがやそだち トマト 大3個',
                 'itemDescription': '世田谷で育った新鮮なトマトです。',
                 'itemPrice': 300,
@@ -412,7 +404,7 @@ data = [
             },
             {
                 'lockerNo': 7,
-                'itemId': '1001007',
+                'itemId': '1003007',
                 'itemName': 'せたがやそだち たまねぎ 中3個',
                 'itemDescription': '世田谷で育った新鮮な玉ねぎです。',
                 'itemPrice': 300,
@@ -421,7 +413,7 @@ data = [
             },
             {
                 'lockerNo': 8,
-                'itemId': '1001008',
+                'itemId': '1003008',
                 'itemName': 'せたがやそだち たまねぎ 中3個',
                 'itemDescription': '世田谷で育った新鮮な玉ねぎです。',
                 'itemPrice': 300,
@@ -430,7 +422,7 @@ data = [
             },
             {
                 'lockerNo': 9,
-                'itemId': '1001009',
+                'itemId': '1003009',
                 'itemName': 'せたがやそだち たまねぎ 中3個',
                 'itemDescription': '世田谷で育った新鮮な玉ねぎです。',
                 'itemPrice': 300,
@@ -439,7 +431,7 @@ data = [
             },
             {
                 'lockerNo': 10,
-                'itemId': '1001010',
+                'itemId': '1003010',
                 'itemName': 'せたがやそだち 詰め合わせ',
                 'itemDescription': 'カレーにぴったりな、じゃがいも（中3個）、にんじん（1本）、たまねぎ（中3個）のセットです。',
                 'itemPrice': 500,
@@ -448,7 +440,7 @@ data = [
             },
             {
                 'lockerNo': 11,
-                'itemId': '1001011',
+                'itemId': '1003011',
                 'itemName': 'せたがやそだち 詰め合わせ',
                 'itemDescription': 'カレーにぴったりな、じゃがいも（中3個）、にんじん（1本）、たまねぎ（中3個）のセットです。',
                 'itemPrice': 500,
@@ -457,7 +449,7 @@ data = [
             },
             {
                 'lockerNo': 12,
-                'itemId': '1001012',
+                'itemId': '1003012',
                 'itemName': 'せたがやそだち 詰め合わせ',
                 'itemDescription': 'カレーにぴったりな、じゃがいも（中3個）、にんじん（1本）、たまねぎ（中3個）のセットです。',
                 'itemPrice': 500,

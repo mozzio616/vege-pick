@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="">
 
-  <title> Pick a Local </title>
+  <title> Local Veggie Locker </title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
@@ -44,7 +44,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="{{ url_for('index') }}">
             <span>
-              Pick a Local
+              Local Veggie Locker
             </span>
           </a>
 
@@ -57,13 +57,13 @@
               <li class="nav-item ">
                 <a class="nav-link" href="{{ url_for('index') }}">Home </a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item ">
                 <a class="nav-link" href="{{ url_for('about') }}">About </a>
               </li>
 
             </ul>
             <div class="user_option">
-              <a href="" class="order_online">
+              <a href="{{ url_for('search') }}" class="order_online">
                 FIND YOUR LOCAL
               </a>
             </div>
@@ -82,7 +82,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="{{ url_for('static', filename='images/sold.png') }}" alt="">
+            <img src="{{ url_for('static', filename='images/empty-basket.png') }}" alt="">
           </div>
         </div>
         <div class="col-md-6">
@@ -93,10 +93,10 @@
               </h2>
             </div>
             <p>
-              申し訳ございません。選択いただいたロッカーの商品は売り切れとなっております。在庫があるロッカーをご確認いただき、ご購入をお願いいたします。
+              申し訳ございません。選択いただいたロッカーの商品は売り切れのようです。在庫があるロッカーをご確認の上、あらためてご購入の手続きをお願いいたします。
             </p>
-            <a href="/search">
-              FIND ANOTHER LOCAL
+            <a href="{{ url_for('search') }}">
+              FIND YOUR LOCAL
             </a>
           </div>
         </div>
@@ -125,7 +125,7 @@
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                  Call +81 1234567890
                 </span>
               </a>
               <a href="">
@@ -140,10 +140,10 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Pick a Local
+              Local Veggie Locker
             </a>
             <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+              help support local growers in Tokyo
             </p>
             <div class="footer_social">
               <a href="">
@@ -179,7 +179,7 @@
       <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> 
-          <a href="">Pick a Local inc.</a> All Rights Reserved<br><br>
+          <a href="">Local Veggie Locker inc.</a> All Rights Reserved<br><br>
         </p>
       </div>
     </div>

@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="">
 
-  <title> Pick a Local </title>
+  <title> Local Veggie Locker </title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
@@ -44,7 +44,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="{{ url_for('index') }}">
             <span>
-              Pick a Local
+              Local Veggie Locker
             </span>
           </a>
 
@@ -63,7 +63,7 @@
             </ul>
             <div class="user_option">
               <a href="{{ url_for('search') }}" class="order_online">
-                Find Your Local
+                FIND YOUR LOCAL
               </a>
             </div>
           </div>
@@ -81,7 +81,10 @@
         <h2>
           {{ data.locationNameEn }}
         </h2>
-        <h4>{{ data.locationNameJp }}</h4>
+        <br>
+        <h4>
+          {{ data.locationNameJp }}
+        </h4>
       </div>
 
       <ul class="filters_menu">
@@ -218,10 +221,10 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Veggie Pick
+              Local Veggie Locker
             </a>
             <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+              help support local growers in Tokyo
             </p>
             <div class="footer_social">
               <a href="">
@@ -256,10 +259,8 @@
       </div>
       <div class="footer-info">
         <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a><br><br>
-          &copy; <span id="displayYear"></span> Distributed By
-          <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+          &copy; <span id="displayYear"></span> 
+          <a href="">Local Veggie Locker inc.</a> All Rights Reserved<br><br>
         </p>
       </div>
     </div>
