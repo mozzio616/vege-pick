@@ -8,10 +8,9 @@ API_KEY = os.environ['PP_API_KEY']
 API_SECRET = os.environ['PP_API_SECRET']
 MERCHANT_ID = os.environ['PP_MERCHANT_ID']
 REDIRECT_URL = os.environ['PP_REDIRECT_URL']
-DB_USER = os.environ['MONGO_USER']
-DB_PASS = os.environ['MONGO_PASS']
+DB_HOST = os.environ['MONGO_HOST']
 
-connection_url = 'mongodb+srv://' + DB_USER + ':' + DB_PASS + '@cluster0.gdlpa.gcp.mongodb.net/?retryWrites=true&w=majority'
+connection_url = DB_HOST
 
 app = Flask(__name__)
 QRcode(app)
