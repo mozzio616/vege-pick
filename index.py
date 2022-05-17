@@ -47,7 +47,7 @@ def items():
         return redirect('/search')
     else:
         locationData = locationCollection.find_one({'locationId': locationId})
-        itemData = itemCollection.find({'locationId': locationId}).sort('itemId', pymongo.ASCENDING)
+        itemData = itemCollection.find({'locationId': locationId}).sort([('itemId', pymongo.ASCENDING)])
         if locationData is None or itemData is None:
             return redirect('/search')
         else:
