@@ -105,9 +105,9 @@ def create_code():
 
 def wait_checkout(merchantPaymentId, itemId):
     i = 0
-    while i < 50:
+    while i < 5:
         response = client.Code.get_payment_details(merchantPaymentId)
-        #print(response['data']['status'])
+        print(response['data']['status'])
         if response['data']['status'] == 'COMPLETED':
             return print('paid')
             break
@@ -117,7 +117,7 @@ def wait_checkout(merchantPaymentId, itemId):
             break
         else:
             i += 1
-            time.sleep(10)
+            time.sleep(1)
     else:
         itemCollection.update_one({'itemId': itemId}, {'$set': {'isAvailable': True}})
         return print('timeout')
