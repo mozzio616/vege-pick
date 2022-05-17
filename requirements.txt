@@ -1,3 +1,4 @@
 Flask
 paypayopa
 flask_qrcode
+pymongo
