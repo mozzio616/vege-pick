@@ -1,4 +1,3 @@
-from multiprocessing import connection
 from flask import Flask, render_template, request, redirect
 import paypayopa
 from flask_qrcode import QRcode
