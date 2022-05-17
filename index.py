@@ -17,6 +17,8 @@ app = Flask(__name__)
 QRcode(app)
 mongoClient = pymongo.MongoClient(connection_url)
 db = mongoClient.lvl
+locationCollection = db.locations
+itemCollection = db.items
 
 client = paypayopa.Client(auth=(API_KEY, API_SECRET), production_mode=False)
 client.set_assume_merchant(MERCHANT_ID)
@@ -43,8 +45,8 @@ def items():
     if locationId is None:
         return redirect('/search')
     else:
-        locationData = db.locations.find_one({'locationId': locationId})
-        itemData = db.items.find({'locationId': locationId})
+        locationData = locationCollection.find_one({'locationId': locationId})
+        itemData = itemCollection.find({'locationId': locationId})
         if locationData is None or itemData is None:
             return redirect('/search')
         else:
@@ -57,8 +59,8 @@ def create_code():
     if locationId is None or itemId is None:
         return redirect('/search')
     else:
-        locationData = db.locations.find_one({'locationId': locationId})
-        itemData = db.items.find_one({'locationId': locationId, 'itemId': itemId})
+        locationData = locationCollection.find_one({'locationId': locationId})
+        itemData = itemCollection.find_one({'locationId': locationId, 'itemId': itemId})
         if locationData is None:
             return redirect('/search')
         elif itemData is None:
@@ -105,10 +107,9 @@ def sold():
 
 @app.route('/api/locations', methods=['GET', 'POST'])
 def addLocations():
-    collection = db.locations
     if request.method == 'POST':
         for index, location in enumerate(request.json):
-            collection.insert_one(location)
+            locationCollection.insert_one(location)
         response = {'message': str(len(request.json)) + ' locations created.'}
         return response
     else:
@@ -116,10 +117,9 @@ def addLocations():
 
 @app.route('/api/items', methods=['GET', 'POST'])
 def addItems():
-    collection = db.items
     if request.method == 'POST':
         for index, item in enumerate(request.json):
-            collection.insert_one(item)
+            itemCollection.insert_one(item)
         response = {'message': str(len(request.json)) + ' items created.'}
         return response
     else:
