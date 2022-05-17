@@ -87,8 +87,14 @@
               </h2>
             </div>
             <p>
-              カメラアプリでQRコードをスキャンしてお支払い手続きにお進みください。
+              選択された商品をご確認の上、カメラアプリでQRコードをスキャンしてお支払い手続きにお進みください。<br><br><br>
+              {{ locationData.locationNameJp }} &#009;ロッカー番号 {{ itemData.lockerNo }}
+              <h4>{{ itemData.itemName }}</h4>
+              &yen{{ itemData.itemPrice }}
             </p>
+            <div class="qr-box">
+              <img src="../static/images/{{ itemData.itemImg }}">
+            </div>
           </div>
         </div>
         <div class="col-md-6">
