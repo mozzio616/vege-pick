@@ -163,7 +163,7 @@ def updateStock(itemId):
         response = {'itemId': itemId, 'isAvailable': itemData['isAvailable']}
         return response
 
-@app.route('api/webhook', method=['GET', 'POST'])
+@app.route('/api/webhook', methods=['GET', 'POST'])
 def webhook():
     if request.method == 'POST':
         return 'ok'
