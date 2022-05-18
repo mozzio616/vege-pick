@@ -80,6 +80,13 @@
 
       <div class="row">
         <div class="col-md-6">
+          <div class="img-box">
+            <!--<a href="{{ url }}">-->
+              <img src="{{ qrcode(url) }}" alt="{{ url }}">
+            <!--</a>-->
+          </div>
+        </div>
+        <div class="col-md-6">
           <div class="detail-box">
             <div class="heading_container">
               <h2>
@@ -95,13 +102,6 @@
             <div class="qr-box">
               <img src="../static/images/{{ item.itemImg }}">
             </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="img-box">
-            <!--<a href="{{ url }}">-->
-              <img src="{{ qrcode(url) }}" alt="{{ url }}">
-            <!--</a>-->
           </div>
         </div>
       </div>
