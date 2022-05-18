@@ -151,6 +151,17 @@ def addItems():
     else:
         return '{}'
 
+@app.route('/api/items/<itemId>', methods=['GET', 'PUT'])
+def updateStock(itemId):
+    if request.method == 'PUT':
+        isAvailable = request.json['isAvailable']
+        itemCollection.update_one({'itemId': itemId}, {'$set': {'isAvailable': isAvailable}})
+        response = {'itemId': itemId, 'isAvailable': isAvailable}
+        return response
+    else:
+        itemData = itemCollection.find_one({'itemId': itemId})
+        response = {'itemId': itemId, 'isAvailable': itemData['isAvailable']}
+        return response
         
 if __name__ == '__main__':
     app.run()
