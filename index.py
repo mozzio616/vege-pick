@@ -4,6 +4,7 @@ import paypayopa
 import pymongo
 from slack_sdk.webhook import WebhookClient
 import os, datetime
+from bson.json_util import dumps
 
 API_KEY = os.environ['PP_API_KEY']
 API_SECRET = os.environ['PP_API_SECRET']
@@ -119,7 +120,7 @@ def sold():
 def api_locations():
     if request.method == 'GET':
         locations = collection_locations.find()
-        return locations
+        return dumps(locations)
     elif request.method == 'POST':
         for i, location in enumerate(request.json):
             collection_locations.insert_one(location)
@@ -132,7 +133,7 @@ def api_locations():
 def api_items():
     if request.method == 'GET':
         items = collection_items.find()
-        return items
+        return dumps(items)
     elif request.method == 'POST':
         for i, item in enumerate(request.json):
             collection_items.insert_one(item)
