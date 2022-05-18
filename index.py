@@ -162,6 +162,13 @@ def updateStock(itemId):
         itemData = itemCollection.find_one({'itemId': itemId})
         response = {'itemId': itemId, 'isAvailable': itemData['isAvailable']}
         return response
+
+@app.route('api/webhook', method=['GET', 'POST'])
+def webhook():
+    if request.method == 'POST':
+        return 'ok'
+    else:
+        return 'ok'
         
 if __name__ == '__main__':
     app.run()
