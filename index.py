@@ -68,6 +68,7 @@ def create_code():
             return redirect('/items?locationId=' + locationId)
         elif itemData['isAvailable'] is True:
             merchantPaymentId = create_merchant_payment_id()
+            print(merchantPaymentId)
             req = {
                 "merchantPaymentId": merchantPaymentId,
                 "codeType": "ORDER_QR",
@@ -107,7 +108,7 @@ def wait_checkout(merchantPaymentId, itemId):
     i = 0
     while i < 5:
         response = client.Code.get_payment_details(merchantPaymentId)
-        print(response['data']['status'])
+        #print(response['data']['status'])
         if response['data']['status'] == 'COMPLETED':
             return print('paid')
             break
@@ -169,6 +170,12 @@ def webhook():
         return 'ok'
     else:
         return 'ok'
-        
+
+@app.route('/api/paypay/<merchantPaymentId>/status')
+def paypay_status(merchantPaymentId):
+    response = client.Code.get_payment_details(merchantPaymentId)
+    print(response['data']['status'])
+    return 'ok'
+            
 if __name__ == '__main__':
     app.run()
