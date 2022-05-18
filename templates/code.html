@@ -88,19 +88,19 @@
             </div>
             <p>
               選択された商品をご確認の上、カメラアプリでQRコードをスキャンしてお支払い手続きにお進みください。<br><br><br>
-              {{ locationData.locationNameJp }} &#009;ロッカー番号 {{ itemData.lockerNo }}
-              <h4>{{ itemData.itemName }}</h4>
-              &yen{{ itemData.itemPrice }}
+              {{ location.locationNameJp }} &#009;ロッカー番号 {{ item.lockerNo }}
+              <h4>{{ item.itemName }}</h4>
+              &yen{{ item.itemPrice }}
             </p>
             <div class="qr-box">
-              <img src="../static/images/{{ itemData.itemImg }}">
+              <img src="../static/images/{{ item.itemImg }}">
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="img-box">
-            <!--<a href="{{ paypay_url }}">-->
-              <img src="{{ qrcode(paypay_url) }}" alt="{{ paypay_url }}">
+            <!--<a href="{{ url }}">-->
+              <img src="{{ qrcode(url) }}" alt="{{ url }}">
             <!--</a>-->
           </div>
         </div>
