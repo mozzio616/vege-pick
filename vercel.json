@@ -3,18 +3,14 @@
     "public": false,
     "builds": [
       {
-        "src": "./index.py",
+        "src": "*.py",
         "use": "@vercel/python"
-      },
-      {
-        "src": "/static/**",
-        "use": "@vercel/static"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "index.py"
+        "dest": "/"
       }
     ]
   }
