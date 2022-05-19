@@ -7,14 +7,14 @@
         "use": "@vercel/python"
       },
       {
-        "src": "*.js",
+        "src": "/static/**",
         "use": "@vercel/static"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/"
+        "dest": "index.py"
       }
     ]
   }
