@@ -8,7 +8,7 @@
       },
       {
         "src": "*.js",
-        "use": "@vercle/static"
+        "use": "@vercel/static"
       }
     ],
     "routes": [
