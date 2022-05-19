@@ -7,7 +7,6 @@ function getYear() {
 
 getYear();
 
-
 // isotope js
 $(window).on('load', function () {
     $('.filters_menu li').click(function () {
@@ -30,103 +29,50 @@ $(window).on('load', function () {
 });
 
 // nice select
-$(document).ready(function() {
+$(document).ready(function () {
     $('select').niceSelect();
-  });
+});
 
-/** google_map js **/
+// google_map js
 var map;
+var markerData = []
 var marker = [];
 var infoWindow = [];
 
-var markerData = []
-
-$(function(){
+$(function () {
     $.ajax({
         type: "GET",
         url: "/api/locations",
         dataType: "json",
-        success: function(data){
+        success: function (data) {
             markerData = data;
             myMap(markerData);
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown){
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert('Error : ' + errorThrown)
         }
     });
 });
 
-/*var markerD = [
-    {
-        name: '駒沢大学',
-        lat: 35.63339,
-        lng: 139.66166,
-        icon: 'static/images/marker.png',
-        locationId: '1001'
-    }, {
-        name: '新町保育園',
-        lat: 35.62664,
-        lng: 139.65360,
-        icon: 'static/images/marker.png',
-        locationId: '1002'
-    }, {
-        name: '深沢小学校',
-        lat: 35.627579,
-        lng: 139.652410,
-        icon: 'static/images/marker.png',
-        locationId: '1003'
-    }, {
-        name: '駒沢公園3号売店',
-        lat: 35.627498,
-        lng: 139.658775,
-        icon: 'static/images/marker.png',
-        locationId: '1004'
-    }, {
-        name: 'Mr.FARMER 駒沢公園店',
-        lat: 35.62810,
-        lng: 139.65667,
-        icon: 'static/images/marker.png',
-        locationId: '1005'
-    }, {
-        name: '駒沢病院',
-        lat: 35.63391,
-        lng: 139.66060,
-        icon: 'static/images/marker.png',
-        locationId: '1006'
-    }, {
-        name: '駒沢小学校',
-        lat: 35.63324,
-        lng: 139.65795,
-        icon: 'static/images/marker.png',
-        locationId: '1007'
-    }, {
-        name: '駒沢バッティングスタジアム',
-        lat: 35.62250,
-        lng: 139.65666,
-        icon: 'static/images/marker.png',
-        locationId: '1008'
-    }
-];*/
-
 function markers(map, markerData) {
     for (var i = 0; i < markerData.length; i++) {
-        markerLatLng = new google.maps.LatLng({ lat: markerData[i]['lat'], lng: markerData[i]['lng']});
+        markerLatLng = new google.maps.LatLng({ lat: markerData[i]['lat'], lng: markerData[i]['lng'] });
         marker[i] = new google.maps.Marker({
             position: markerLatLng,
             map: map,
             icon: markerData[i]['icon']
         });
         infoWindow[i] = new google.maps.InfoWindow({
-            content: '<div class="googleMap"><a href="/items?locationId=' + markerData[i]['locationId'] + '">' + markerData[i]['locationNameJp'] + '</a></div>' 
+            content: '<div class="googleMap"><a href="/items?locationId=' + markerData[i]['locationId'] + '">' + markerData[i]['locationNameJp'] + '</a></div>'
         });
         markerEvent(i);
     };
 }
 
 function markerEvent(i) {
-    marker[i].addListener('click', function() { // マーカーをクリックしたとき
-      infoWindow[i].open(map, marker[i]); // 吹き出しの表示
-  });
+    marker[i].addListener('click', function () {
+        infoWindow[i].open(map, marker[i]);
+    });
 }
 
 function myMap(markerData) {
