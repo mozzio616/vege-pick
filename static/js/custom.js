@@ -38,7 +38,25 @@ $(document).ready(function() {
 var map;
 var marker = [];
 var infoWindow = [];
-var markerData = [
+
+var markerData = []
+
+$(function(){
+    $.ajax({
+        type: "GET",
+        url: "/api/locations",
+        dataType: "json",
+        success: function(data){
+            markerData = data;
+            myMap(markerData);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            alert('Error : ' + errorThrown)
+        }
+    });
+});
+
+/*var markerD = [
     {
         name: '駒沢大学',
         lat: 35.63339,
@@ -88,9 +106,9 @@ var markerData = [
         icon: 'static/images/marker.png',
         locationId: '1008'
     }
-];
+];*/
 
-function markers(map) {
+function markers(map, markerData) {
     for (var i = 0; i < markerData.length; i++) {
         markerLatLng = new google.maps.LatLng({ lat: markerData[i]['lat'], lng: markerData[i]['lng']});
         marker[i] = new google.maps.Marker({
@@ -99,7 +117,7 @@ function markers(map) {
             icon: markerData[i]['icon']
         });
         infoWindow[i] = new google.maps.InfoWindow({
-            content: '<div class="googleMap"><a href="/items?locationId=' + markerData[i]['locationId'] + '">' + markerData[i]['name'] + '</a></div>' 
+            content: '<div class="googleMap"><a href="/items?locationId=' + markerData[i]['locationId'] + '">' + markerData[i]['locationNameJp'] + '</a></div>' 
         });
         markerEvent(i);
     };
@@ -111,7 +129,7 @@ function markerEvent(i) {
   });
 }
 
-function myMap() {
+function myMap(markerData) {
     function success(pos) {
         var lat = pos.coords.latitude;
         var lng = pos.coords.longitude;
@@ -120,7 +138,7 @@ function myMap() {
             zoom: 15,
             center: latlng
         });
-        markers(map);
+        markers(map, markerData);
     }
     function fail(error) {
         alert('位置情報の取得に失敗しました');
@@ -129,7 +147,7 @@ function myMap() {
             zoom: 10,
             center: latlng
         });
-        markers(map);
+        markers(map, markerData);
     }
     navigator.geolocation.getCurrentPosition(success, fail);
 }
