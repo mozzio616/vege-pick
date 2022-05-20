@@ -3,6 +3,7 @@ from flask_qrcode import QRcode
 import paypayopa
 import pymongo
 from slack_sdk.webhook import WebhookClient
+from flask_cors import CORS
 import os, datetime
 from bson.json_util import dumps
 
@@ -16,6 +17,7 @@ WEBHOOK_URL = os.environ['WEBHOOK_URL']
 connection_url = DB_HOST
 
 app = Flask(__name__)
+CORS(app)
 
 mongoClient = pymongo.MongoClient(connection_url)
 db = mongoClient.lvl

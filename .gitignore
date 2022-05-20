@@ -1,3 +1,2 @@
-vpick/*
-samples/*
-memo.ipynb
+venv/*
+__pycache__/*
