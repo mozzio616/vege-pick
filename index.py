@@ -123,13 +123,27 @@ def api_locations():
     if request.method == 'GET':
         locations = collection_locations.find()
         return dumps(locations)
-    elif request.method == 'POST':
-        for i, location in enumerate(request.json):
-            collection_locations.insert_one(location)
-        response = {'message': str(len(request.json)) + ' locations created.'}
-        return response
     else:
-        return '{}'
+        if type(request.json) is dict:
+            response = collection_locations.insert_one(request.json)
+            return dumps(response.inserted_id)
+        elif type(request.json) is list:
+            response = collection_locations.insert_many(request.json)
+            return dumps(response.inserted_ids)
+        else:
+            return 'null', 400
+
+@app.route('/api/locations/<locationId>', methods=['GET', 'PUT', 'DELETE'])
+def api_location(locationId):
+    if request.method == 'GET':
+        location = collection_locations.find_one({'locationId': locationId})
+        return dumps(location)
+    elif request.method == 'PUT':
+        response = collection_locations.update_one({'locationId': locationId},{'$set': request.json})
+        return {'modified_count': response.modified_count}
+    else:
+        response = collection_locations.delete_one({'locationId': locationId})
+        return {'deleted_count': response.deleted_count}
 
 @app.route('/api/items', methods=['GET', 'POST'])
 def api_items():

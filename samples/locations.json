@@ -1,0 +1,74 @@
+[
+    {
+        "_id": 1,
+        "icon": "static/images/markder.png",
+        "lat": 35.63339,
+        "lng": 139.66166,
+        "locationId": "1009",
+        "locationNameEn": "Komazawa-daigaku Sta.",
+        "locationNameJp": "駒沢大学駅"
+    },
+    {
+        "_id": 2,
+        "icon": "static/images/marker.png",
+        "lat": 35.62664,
+        "lng": 139.6536,
+        "locationId": "1010",
+        "locationNameEn": "Shin-machi Nursery School",
+        "locationNameJp": "新町保育園"
+    },
+    {
+        "_id": 3,
+        "icon": "static/images/marker.png",
+        "lat": 35.627579,
+        "lng": 139.65241,
+        "locationId": "1011",
+        "locationNameEn": "Fukasawa Elementary School",
+        "locationNameJp": "深沢小学校"
+    },
+    {
+        "_id": 4,
+        "icon": "static/images/marker.png",
+        "lat": 35.627498,
+        "lng": 139.658775,
+        "locationId": "1012",
+        "locationNameEn": "Komazawa Park Kiosk #3",
+        "locationNameJp": "駒沢公園3号売店"
+    },
+    {
+        "_id": 5,
+        "icon": "static/images/marker.png",
+        "lat": 35.6281,
+        "lng": 139.65667,
+        "locationId": "1013",
+        "locationNameEn": "Mr.FARMER Komazawa Park",
+        "locationNameJp": "Mr.FARMER 駒沢公園店"
+    },
+    {
+        "_id": 6,
+        "icon": "static/images/marker.png",
+        "lat": 35.63391,
+        "lng": 139.6606,
+        "locationId": "1014",
+        "locationNameEn": "Komazawa Hospital",
+        "locationNameJp": "駒沢病院"
+    },
+    {
+        "_id": 7,
+        "icon": "static/images/marker.png",
+        "lat": 35.63324,
+        "lng": 139.65795,
+        "locationId": "1015",
+        "locationNameEn": "Komazawa Elementary School",
+        "locationNameJp": "駒沢小学校"
+    },
+    {
+        "_id": 8,
+        "icon": "static/images/marker.png",
+        "lat": 35.6225,
+        "lng": 139.65666,
+        "locationId": "1016",
+        "locationNameEn": "Komazawa Batting Stadium",
+        "locationNameJp": "駒沢バッティングスタジアム"
+    }
+]
