@@ -186,6 +186,9 @@ def payments_logs():
         logs = collection_payments.find()
         return dumps(logs)
     elif request.method == 'POST':
+        paid_at = request.json.paid_at
+        d = datetime.datetime.strptime(paid_at, "%Y-%m-%dT%H:%M:%S.%fZ")
+        request.json.paid_at = d
         response = collection_payments.insert_one(request.json)
         return dumps(response.inserted_id)
     else:
