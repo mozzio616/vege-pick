@@ -186,10 +186,12 @@ def payments_logs():
         logs = collection_payments.find()
         return dumps(logs)
     elif request.method == 'POST':
-        paid_at = request.json.paid_at
-        d = datetime.datetime.strptime(paid_at, "%Y-%m-%dT%H:%M:%S.%fZ")
-        request.json.paid_at = d
+        paid_at = { '$date': request.json['paid_at'] }
+        request.json['paid_at'] = paid_at
         response = collection_payments.insert_one(request.json)
+#        message = request.json['merchant_order_id'] + ':' + request.json['state']
+#        webhook = WebhookClient(WEBHOOK_URL)
+#        res_webhook = webhook.send(text=message)
         return dumps(response.inserted_id)
     else:
         return {}

@@ -1,0 +1,13 @@
+{
+    "authorized_at": null,
+    "expires_at": null,
+    "merchant_id": "509166169916080128",
+    "merchant_order_id": "100200220220524153101",
+    "notification_type": "Transaction",
+    "order_amount": "1",
+    "order_id": "03902069511876747264",
+    "paid_at": "2022-05-25T00:31:18+09:00",
+    "pos_id": "",
+    "state": "COMPLETED",
+    "store_id": ""
+}
