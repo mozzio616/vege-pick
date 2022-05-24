@@ -23,6 +23,7 @@ mongoClient = pymongo.MongoClient(connection_url)
 db = mongoClient.lvl
 collection_locations = db.locations
 collection_items = db.items
+collection_payments = db.payments
 
 QRcode(app)
 client = paypayopa.Client(auth=(API_KEY, API_SECRET), production_mode=False)
@@ -179,6 +180,16 @@ def payment_status(merchantPaymentId):
     response = {'merchantPaymentId': merchantPaymentId, 'status': status}
     return response
 
+@app.route('/api/payments/logs', methods=['GET', 'POST'])
+def payments_logs():
+    if request.method == 'GET':
+        logs = collection_payments.find()
+        return dumps(logs)
+    elif request.method == 'POST':
+        response = collection_payments.insert_one(request.json)
+        return dumps(response.inserted_id)
+    else:
+        return {}
             
 if __name__ == '__main__':
     app.run()
