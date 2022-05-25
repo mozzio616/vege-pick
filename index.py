@@ -1,3 +1,4 @@
+from tracemalloc import start
 from flask import Flask, render_template, request, redirect
 from flask_qrcode import QRcode
 import paypayopa
@@ -183,18 +184,108 @@ def payment_status(merchantPaymentId):
 @app.route('/api/payments/logs', methods=['GET', 'POST'])
 def payments_logs():
     if request.method == 'GET':
-        logs = collection_payments.find()
+        dt = datetime.datetime.now()
+        if request.args.get('fm') is None:
+            fm = dt + datetime.timedelta(weeks=-1)
+        else:
+            fm = datetime.datetime.fromisoformat(request.args.get('fm'))
+        if request.args.get('to') is None:
+            to = dt
+        else:
+            to = datetime.datetime.fromisoformat(request.args.get('to'))
+        logs = collection_payments.find({'paid_at': {'$gte': fm, '$lte': to}})
         return dumps(logs)
     elif request.method == 'POST':
-        paid_at = { '$date': request.json['paid_at'] }
-        request.json['paid_at'] = paid_at
-        response = collection_payments.insert_one(request.json)
-#        message = request.json['merchant_order_id'] + ':' + request.json['state']
-#        webhook = WebhookClient(WEBHOOK_URL)
-#        res_webhook = webhook.send(text=message)
-        return dumps(response.inserted_id)
+        if type(request.json) is list:   # to insert bulk test data
+            logs = request.json
+            message = []
+            for log in logs:
+                log['paid_at']  = datetime.datetime.fromisoformat(log['paid_at'])
+                log['order_amount'] = int(log['order_amount'])
+                log['year'] = int(log['year'])
+                log['month'] = int(log['month'])
+                log['day'] = int(log['day'])
+                response = collection_payments.insert_one(log)
+                message.append(response.inserted_id)
+            return dumps(message)
+        else:
+            dt = datetime.datetime.fromisoformat(request.json['paid_at'])
+            request.json['paid_at'] = dt
+            request.json['order_amount'] = int(request.json['order_amount'])
+            request.json['year'] = dt.year
+            request.json['month'] = dt.month
+            request.json['day'] = dt.day
+            response = collection_payments.insert_one(request.json)
+            #message = request.json['merchant_order_id'] + ':' + request.json['state']
+            #webhook = WebhookClient(WEBHOOK_URL)
+            #res_webhook = webhook.send(text=message)
+            return dumps(response.inserted_id)
     else:
         return {}
-            
+
+@app.route('/api/sales')
+def sales():
+    dt = datetime.datetime.now()
+    if request.args.get('fm') is None:
+        fm = dt + datetime.timedelta(weeks=-4)
+    else:
+        fm = datetime.datetime.fromisoformat(request.args.get('fm'))
+    if request.args.get('to') is None:
+        to = dt
+    else:
+        to = datetime.datetime.fromisoformat(request.args.get('to'))
+    if request.args.get('unit') is None:
+        unit = 'day'
+    else:
+        unit = request.args.get('unit')
+    labels = []
+    values = []
+    if unit == 'day':
+        pipe = [
+            {
+                '$match': { 'paid_at': { '$gte': fm, '$lte': to }}
+            },
+            {
+                '$group': {
+                    '_id': { 'year': '$year', 'month': '$month', 'day': '$day' },
+                    'total': { '$sum': '$order_amount' }
+                }
+            },
+            {
+                '$sort': { '_id.year': 1, '_id.month': 1, '_id.day': 1 }
+            }
+        ]
+        sales = collection_payments.aggregate(pipeline=pipe)
+        for sale in sales:
+            label = str(sale['_id']['month']) + '-' + str(sale['_id']['day'])
+            labels.append(label)
+            values.append(sale['total'])
+        return dumps({'labels': labels, 'values': values})
+    elif unit == 'month':
+        pipe = [
+            {
+                '$match': { 'paid_at': { '$gte': fm, '$lte': to }}
+            },
+            {
+                '$group': {
+                    '_id': { 'year': '$year', 'month': '$month' },
+                    'total': { '$sum': '$order_amount' }
+                }
+            },
+            {
+                '$sort': { '_id.year': 1, '_id.month': 1, }
+            }
+        ]
+        sales = collection_payments.aggregate(pipeline=pipe)
+        for sale in sales:
+            label = str(sale['_id']['year']) + '-' + str(sale['_id']['month'])
+            labels.append(label)
+            values.append(sale['total'])
+        return dumps({'labels': labels, 'values': values})
+    else:
+        return {'message': 'invalid unit'}, 400
+
+
+
 if __name__ == '__main__':
     app.run()
