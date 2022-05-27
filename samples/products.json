@@ -1,0 +1,39 @@
+[
+    {
+        "itemId": "P9999999",
+        "itemName": "準備中",
+        "itemDescription": "",
+        "itemPrice": 0,
+        "itemImg": "empty-basket.png"
+    },
+    {
+        "itemId": "P0000001",
+        "itemName": "せたがやそだち キャベツ 1玉",
+        "itemDescription": "世田谷で育った新鮮なキャベツです。",
+        "itemPrice": 200,
+        "itemImg": "cabbage.png"
+    },
+    {
+        "itemId": "P0000002",
+        "itemName": "せたがやそだち トマト 中3個",
+        "itemDescription": "世田谷で育った新鮮なトマトです。",
+        "itemPrice": 300,
+        "itemImg": "tomato.png"
+    },
+    {
+        "itemId": "P0000003",
+        "itemName": "せたがやそだち たまねぎ 中3個",
+        "itemDescription": "世田谷で育った新鮮な玉ねぎです。",
+        "itemPrice": 400,
+        "itemImg": "onion.png"
+
+    },
+    {
+        "itemId": "P0000004",
+        "itemName": "せたがやそだち 詰め合わせ",
+        "itemDescription": "カレーにぴったりなジャガイモ、にんじん、玉ねぎのセットです。",
+        "itemPrice": 500,
+        "itemImg": "vegset1.png"
+
+    }
+]

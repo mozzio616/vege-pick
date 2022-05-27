@@ -1,0 +1,1094 @@
+[
+    {
+        "rackId": "R0000001",
+        "locationId": "L0000001",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000001B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000001B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000001B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000001B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000001B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000001B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000001B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000001B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000001B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000001B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000001B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000001B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000002",
+        "locationId": "L0000001",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000002B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000002B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000002B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000002B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000002B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000002B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000002B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000002B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000002B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000002B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000002B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000002B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },    {
+        "rackId": "R0000003",
+        "locationId": "L0000002",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000003B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000003B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000003B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000003B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000003B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000003B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000003B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000003B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000003B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000003B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000003B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000003B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000004",
+        "locationId": "L0000002",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000004B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000004B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000004B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000004B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000004B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000004B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000004B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000004B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000004B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000004B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000004B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000004B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000005",
+        "locationId": "L0000001",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000005B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000005B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000005B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000005B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000005B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000005B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000005B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000005B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000005B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000005B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000005B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000005B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000006",
+        "locationId": "L0000003",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000006B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000006B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000006B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000006B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000006B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000006B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000006B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000006B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000006B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000006B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000006B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000006B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000007",
+        "locationId": "L0000003",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000007B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000007B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000007B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000007B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000007B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000007B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000007B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000007B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000007B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000007B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000007B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000007B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000008",
+        "locationId": "L0000004",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000008B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000008B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000008B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000008B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000008B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000008B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000008B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000008B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000008B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000008B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000008B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000008B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000009",
+        "locationId": "L0000005",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000009B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000009B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000009B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000009B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000009B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000009B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000009B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000009B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000009B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000009B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000009B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000009B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000010",
+        "locationId": "L0000004",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000010B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000010B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000010B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000010B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000010B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000010B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000010B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000010B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000010B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000010B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000010B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000010B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000011",
+        "locationId": "L0000006",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000011B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000011B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000011B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000011B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000011B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000011B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000011B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000011B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000011B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000011B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000011B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000011B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000012",
+        "locationId": "L0000007",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000012B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000012B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000012B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000012B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000012B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000012B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000012B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000012B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000012B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000012B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000012B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000012B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000013",
+        "locationId": "L0000007",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000013B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000013B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000013B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000013B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000013B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000013B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000013B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000013B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000013B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000013B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000013B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000013B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    },
+    {
+        "rackId": "R0000014",
+        "locationId": "L0000008",
+        "lockers": [
+            {
+                "lockerNo": 1,
+                "lockerId": "R0000014B001",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 2,
+                "lockerId": "R0000014B002",
+                "itemId": "P9999999",
+                "isAvailable": false
+            },
+            {
+                "lockerNo": 3,
+                "lockerId": "R0000014B003",
+                "itemId": "P0000001",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 4,
+                "lockerId": "R0000014B004",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 5,
+                "lockerId": "R0000014B005",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 6,
+                "lockerId": "R0000014B006",
+                "itemId": "P0000002",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 7,
+                "lockerId": "R0000014B007",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 8,
+                "lockerId": "R0000014B008",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 9,
+                "lockerId": "R0000014B009",
+                "itemId": "P0000003",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 10,
+                "lockerId": "R0000014B010",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 11,
+                "lockerId": "R0000014B011",
+                "itemId": "P0000004",
+                "isAvailable": true
+            },
+            {
+                "lockerNo": 12,
+                "lockerId": "R0000014B012",
+                "itemId": "P0000004",
+                "isAvailable": true
+            }    
+        ]
+    }
+
+]
