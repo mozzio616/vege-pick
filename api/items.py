@@ -2,12 +2,12 @@ from flask import Blueprint, request
 from bson.json_util import dumps
 from api.db import db
 
-items = Blueprint('items', __name__)
+api_items = Blueprint('api_items', __name__)
 
 collection_items = db.items
 
-@items.route('/api/items', methods=['GET', 'POST'])
-def api_items():
+@api_items.route('/api/items', methods=['GET', 'POST'])
+def items():
     if request.method == 'GET':
         items = collection_items.find()
         return dumps(items)
@@ -19,7 +19,7 @@ def api_items():
             res = collection_items.insert_one(request.json)
             return dumps(res.inserted_id)
 
-@items.route('/api/items/<itemId>')
-def api_item(itemId):
+@api_items.route('/api/items/<itemId>')
+def item(itemId):
     item = collection_items.find_one({'itemId': itemId})
     return dumps(item)

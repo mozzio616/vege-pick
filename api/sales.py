@@ -3,12 +3,12 @@ from bson.json_util import dumps
 from api.db import db
 import datetime
 
-sales = Blueprint('sales', __name__)
+api_sales = Blueprint('api_sales', __name__)
 
 collection_payments = db.payments
 
-@sales.route('/api/sales')
-def api_sales():
+@api_sales.route('/api/sales')
+def sales():
     dt = datetime.datetime.now()
     if request.args.get('fm') is None:
         fm = dt + datetime.timedelta(weeks=-4)

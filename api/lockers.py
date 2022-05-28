@@ -1,15 +1,14 @@
-from xmlrpc.client import boolean
 from flask import Blueprint, request
 from bson.json_util import dumps
 from api.db import db
 
-lockers = Blueprint('lockers', __name__)
+api_lockers = Blueprint('api_lockers', __name__)
 
 collection_lockers = db.lockers
 collection_items = db.items
 
-@lockers.route('/api/lockers', methods=['GET', 'POST'])
-def api_lockers():
+@api_lockers.route('/api/lockers', methods=['GET', 'POST'])
+def lockers():
     if request.method == 'GET':
         lockers = collection_lockers.find()
         return dumps(lockers)
@@ -21,8 +20,8 @@ def api_lockers():
             res = collection_lockers.insert_one(request.json)
             return dumps(res.inserted_id)
 
-@lockers.route('/api/lockers/<lockerId>')
-def api_locker(lockerId):
+@api_lockers.route('/api/lockers/<lockerId>')
+def locker(lockerId):
     locker = collection_lockers.find_one({'lockerId': lockerId})
     if locker is None:
         return '', 404
@@ -37,8 +36,8 @@ def api_locker(lockerId):
             locker['itemImg'] = item['itemImg']
             return dumps(locker)
 
-@lockers.route('/api/lockers/<lockerId>/status', methods=['GET', 'PUT'])
-def api_locker_status(lockerId):
+@api_lockers.route('/api/lockers/<lockerId>/status', methods=['GET', 'PUT'])
+def locker_status(lockerId):
     locker = collection_lockers.find_one({'lockerId': lockerId})
     if locker is None:
         return '', 404

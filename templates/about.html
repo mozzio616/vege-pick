@@ -42,7 +42,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="{{ url_for('index') }}">
+          <a class="navbar-brand" href="{{ url_for('page_base.index') }}">
             <span>
               Local Veggie Locker
             </span>
@@ -55,14 +55,14 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item ">
-                <a class="nav-link" href="{{ url_for('index') }}">Home </a>
+                <a class="nav-link" href="{{ url_for('page_base.index') }}">Home </a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                <a class="nav-link" href="{{ url_for('page_base.about') }}">About</a>
               </li>
             </ul>
             <div class="user_option">
-              <a href="{{ url_for('search') }}" class="order_online">
+              <a href="{{ url_for('page_base.search') }}" class="order_online">
                 FIND YOUR LOCAL
               </a>
             </div>
@@ -94,7 +94,7 @@
             <p>
               地元の新鮮な農作物を地域の方々にもっと身近に味わってほしい。都市の農家を応援し、都市の緑を守るとともに、地域の経済にも貢献したい。<br>わたしたちは、地元農産物の無人販売を地域の方々の協力とITの力で街の中へ広げていきます。
             </p>
-            <a href="/search">
+            <a href="{{ url_for('page_base.search')}}">
               FIND YOUR LOCAL
             </a>
           </div>

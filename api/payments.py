@@ -4,7 +4,7 @@ from api.db import db
 import os, datetime
 import paypayopa
 
-payments = Blueprint('payments', __name__)
+api_payments = Blueprint('api_payments', __name__)
 
 API_KEY = os.environ['PP_API_KEY']
 API_SECRET = os.environ['PP_API_SECRET']
@@ -16,14 +16,14 @@ collection_payments = db.payments
 client = paypayopa.Client(auth=(API_KEY, API_SECRET), production_mode=False)
 client.set_assume_merchant(MERCHANT_ID)
 
-@payments.route('/api/payments/<merchantPaymentId>/status')
+@api_payments.route('/api/payments/<merchantPaymentId>/status')
 def payment_status(merchantPaymentId):
     payment_detail = client.Code.get_payment_details(merchantPaymentId)
     status = payment_detail['data']['status']
     response = {'merchantPaymentId': merchantPaymentId, 'status': status}
     return response
 
-@payments.route('/api/payments/logs', methods=['GET', 'POST'])
+@api_payments.route('/api/payments/logs', methods=['GET', 'POST'])
 def payments_logs():
     if request.method == 'GET':
         dt = datetime.datetime.now()

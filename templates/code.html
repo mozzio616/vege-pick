@@ -42,7 +42,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="{{ url_for('index') }}">
+          <a class="navbar-brand" href="{{ url_for('page_base.index') }}">
             <span>
               Local Veggie Locker
             </span>
@@ -55,14 +55,14 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item ">
-                <a class="nav-link" href="{{ url_for('index') }}">Home </a>
+                <a class="nav-link" href="{{ url_for('page_base.index') }}">Home </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('about') }}">About </a>
+                <a class="nav-link" href="{{ url_for('page_base.about') }}">About </a>
               </li>
             </ul>
             <div class="user_option">
-              <a href="{{ url_for('search') }}" class="order_online">
+              <a href="{{ url_for('page_base.search') }}" class="order_online">
                 FIND YOUR LOCAL
               </a>
             </div>

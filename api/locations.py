@@ -3,14 +3,14 @@ from bson.json_util import dumps
 from api.db import db
 import pymongo
 
-locations = Blueprint('locations', __name__)
+api_locations = Blueprint('api_locations', __name__)
 
 collection_locations = db.locations
 collection_lockers = db.lockers
 collection_items = db.items
 
-@locations.route('/api/locations', methods=['GET', 'POST'])
-def api_locations():
+@api_locations.route('/api/locations', methods=['GET', 'POST'])
+def locations():
     if request.method == 'GET':
         locations = collection_locations.find()
         return dumps(locations)
@@ -24,8 +24,8 @@ def api_locations():
         else:
             return '', 400
 
-@locations.route('/api/locations/<locationId>', methods=['GET', 'PUT', 'DELETE'])
-def api_location(locationId):
+@api_locations.route('/api/locations/<locationId>', methods=['GET', 'PUT', 'DELETE'])
+def location(locationId):
     if request.method == 'GET':
         res = collection_locations.find_one({'locationId': locationId})
         if res is None:
@@ -39,8 +39,8 @@ def api_location(locationId):
         res = collection_locations.delete_one({'locationId': locationId})
         return {'deleted_count': res.deleted_count}
 
-@locations.route('/api/locations/<locationId>/lockers', methods=['GET', 'POST', 'PUT', 'DELETE'])
-def api_location_lockers(locationId):
+@api_locations.route('/api/locations/<locationId>/lockers', methods=['GET', 'POST', 'PUT', 'DELETE'])
+def location_lockers(locationId):
     if request.method == 'GET':
         lockers = collection_lockers.find({'locationId': locationId}).sort([('lockerNo', pymongo.ASCENDING)])
         res = []
