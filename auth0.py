@@ -1,5 +1,4 @@
 import requests
-from bson.json_util import dumps
 import os
 from db import db
 
@@ -18,9 +17,8 @@ def get_token():
         'audience': AUTH0_AUDIENCE,
         'grant_type': 'client_credentials'
         }
-    res = requests.post(url, json=payload)
-    token = res.json()['access_token']
-    print(token)
-    response = collection_token.update_one({'_id': 'token'}, {'$set': {'token': token}})
+    res_api = requests.post(url, json=payload)
+    token = res_api.json()['access_token']
+    res_db = collection_token.update_one({'_id': 'token'}, {'$set': {'token': token}})
     print('auth0 access token updated.')
     return token

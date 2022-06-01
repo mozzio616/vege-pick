@@ -37,11 +37,5 @@ app.register_blueprint(api_payments)
 from api.sales import api_sales
 app.register_blueprint(api_sales)
 
-#from api.auth import api_auth
-#app.register_blueprint(api_auth)
-
-from api.protected import api_protected
-app.register_blueprint(api_protected)
-
 if __name__ == '__main__':
     app.run()

@@ -77,7 +77,15 @@ def create_qr_code(locationId, lockerId):
                     webhook = WebhookClient(WEBHOOK_URL)
                     res_webhook = webhook.send(text=message)
                     url = res_payment['data']['url']
-                    return {'url': url, 'locationNameJp': locationNameJp, 'lockerNo': lockerNo, 'itemName': itemName, 'itemPrice': itemPrice, 'itemImg': itemImg}
+                    response = {
+                        'url': url,
+                        'locationNameJp': locationNameJp,
+                        'lockerNo': lockerNo,
+                        'itemName': itemName,
+                        'itemPrice': itemPrice,
+                        'itemImg': itemImg
+                    }
+                    return response
                 else:
                     return {'code': resultCode, 'description': 'Failed to create QR code'}, 500
         else:
