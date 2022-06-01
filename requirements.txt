@@ -5,4 +5,5 @@ flask_qrcode
 pymongo[srv]
 slack_sdk
 requests
+python-dotenv
 python-jose
