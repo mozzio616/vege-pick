@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from bson.json_util import dumps
-from api.db import db
+from db import db
 
 api_lockers = Blueprint('api_lockers', __name__)
 

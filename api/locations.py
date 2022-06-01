@@ -1,7 +1,9 @@
 from flask import Blueprint, request
 from bson.json_util import dumps
-from api.db import db
+from db import db
 import pymongo
+from auth import requires_auth
+from flask_cors import cross_origin
 
 api_locations = Blueprint('api_locations', __name__)
 
@@ -40,6 +42,9 @@ def location(locationId):
         return {'deleted_count': res.deleted_count}
 
 @api_locations.route('/api/locations/<locationId>/lockers', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@cross_origin(headers=["Content-Type", "Authorization"])
+@cross_origin(headers=["Access-Control-Allow-Origin", "http://localhost:3000"])
+@requires_auth
 def location_lockers(locationId):
     if request.method == 'GET':
         lockers = collection_lockers.find({'locationId': locationId}).sort([('lockerNo', pymongo.ASCENDING)])

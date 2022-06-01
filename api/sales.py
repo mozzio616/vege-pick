@@ -1,11 +1,11 @@
 from flask import Blueprint, request
 from bson.json_util import dumps
-from api.db import db
+from db import db
 import datetime
 
-api_sales = Blueprint('api_sales', __name__)
-
 collection_payments = db.payments
+
+api_sales = Blueprint('api_sales', __name__)
 
 @api_sales.route('/api/sales')
 def sales():

@@ -1,10 +1,17 @@
-from flask import Flask
+from flask import Flask, jsonify, Response
 from flask_cors import CORS
 from flask_qrcode import QRcode
+from auth import AuthError
 
 app = Flask(__name__)
 CORS(app)
 QRcode(app)
+
+@app.errorhandler(AuthError)
+def handle_auth_error(ex: AuthError) -> Response:
+    response = jsonify(ex.error)
+    response.status_code = ex.status_code
+    return response
 
 from views.base import page_base   
 app.register_blueprint(page_base)
@@ -29,6 +36,12 @@ app.register_blueprint(api_payments)
 
 from api.sales import api_sales
 app.register_blueprint(api_sales)
+
+#from api.auth import api_auth
+#app.register_blueprint(api_auth)
+
+from api.protected import api_protected
+app.register_blueprint(api_protected)
 
 if __name__ == '__main__':
     app.run()

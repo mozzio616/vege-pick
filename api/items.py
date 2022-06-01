@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from bson.json_util import dumps
-from api.db import db
+from db import db
 
 api_items = Blueprint('api_items', __name__)
 

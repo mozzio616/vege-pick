@@ -81,8 +81,8 @@
       <div class="row">
         <div class="col-md-6">
           <div class="img-box">
-            <!--<a href="{{ url }}">-->
-              <img src="{{ qrcode(url) }}" alt="{{ url }}">
+            <!--<a href="{{ data.url }}">-->
+              <img src="{{ qrcode(data.url) }}" alt="{{ data.url }}">
             <!--</a>-->
           </div>
         </div>
@@ -95,12 +95,12 @@
             </div>
             <p>
               選択された商品をご確認の上、カメラアプリでQRコードをスキャンしてお支払い手続きにお進みください。<br><br><br>
-              {{ location.locationNameJp }} &#009;ロッカー番号 {{ item.lockerNo }}
-              <h4>{{ item.itemName }}</h4>
-              &yen{{ item.itemPrice }}
+              {{ data.locationNameJp }} &#009;ロッカー番号 {{ data.lockerNo }}
+              <h4>{{ data.itemName }}</h4>
+              &yen{{ data.itemPrice }}
             </p>
             <div class="qr-box">
-              <img src="../static/images/{{ item.itemImg }}">
+              <img src="../static/images/{{ data.itemImg }}">
             </div>
           </div>
         </div>
