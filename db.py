@@ -1,7 +1,10 @@
-from flask import Flask
+from dotenv import load_dotenv
 import pymongo
 import os
 
-DB_HOST = os.environ['MONGO_HOST']
+load_dotenv()
+DB_HOST = os.getenv('MONGO_HOST')
+DB_NAME = os.getenv('DB_NAME')
+
 mongoClient = pymongo.MongoClient(DB_HOST)
-db = mongoClient.lvl
+db = mongoClient[DB_NAME]

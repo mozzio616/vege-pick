@@ -37,5 +37,8 @@ app.register_blueprint(api_payments)
 from api.sales import api_sales
 app.register_blueprint(api_sales)
 
+from api.private_hello import api_hello
+app.register_blueprint(api_hello)
+
 if __name__ == '__main__':
     app.run()

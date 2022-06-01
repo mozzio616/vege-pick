@@ -1,21 +1,15 @@
-"""Python Flask API Auth0 integration example
-"""
-
 from functools import wraps
-import json
-import os
 from typing import Dict
-
+from dotenv import load_dotenv
+import os, json
 from six.moves.urllib.request import urlopen
-
-from flask import Flask, request, jsonify, _request_ctx_stack, Response, Blueprint
-from flask_cors import cross_origin
+from flask import request, _request_ctx_stack, Blueprint
 from jose import jwt
 
 api_auth = Blueprint('api_auth', __name__)
 
-AUTH0_DOMAIN = os.environ['AUTH0_DOMAIN']
-API_IDENTIFIER = os.environ['API_IDENTIFIER']
+AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
+API_IDENTIFIER = os.getenv('API_IDENTIFIER')
 ALGORITHMS = ["RS256"]
 
 
@@ -29,18 +23,6 @@ class AuthError(Exception):
         self.error = error
         self.status_code = status_code
 
-'''
-@api_auth.errorhandler(AuthError)
-def handle_auth_error(ex: AuthError) -> Response:
-    """
-    serializes the given AuthError as json and sets the response status code accordingly.
-    :param ex: an auth error
-    :return: json serialized ex response
-    """
-    response = jsonify(ex.error)
-    response.status_code = ex.status_code
-    return response
-'''
 
 def get_token_auth_header() -> str:
     """Obtains the access token from the Authorization Header
