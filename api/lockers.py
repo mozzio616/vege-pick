@@ -40,7 +40,7 @@ def locker(lockerId):
 def locker_status(lockerId):
     locker = collection_lockers.find_one({'lockerId': lockerId})
     if locker is None:
-        return '', 404
+        return {'code': 'locker_not_found', 'description': 'Locker not found'}, 404
     elif request.method == 'GET':
         isAvailable = locker['isAvailable']
         return {'lockerId': lockerId, 'isAvailable': isAvailable}
@@ -50,4 +50,4 @@ def locker_status(lockerId):
             locker = collection_lockers.update_one({'lockerId': lockerId}, {'$set':  {'isAvailable': isAvailable}})
             return {'lockerId': lockerId, 'isAvailable': isAvailable}
         else:
-            return {'message': 'invalid parameters'}, 400
+            return {'code': 'invalid_parameters', 'description': 'Invalid parameters'}, 400
