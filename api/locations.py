@@ -14,7 +14,7 @@ collection_items = db.items
 @api_locations.route('/api/locations', methods=['GET', 'POST'])
 def locations():
     if request.method == 'GET':
-        locations = collection_locations.find()
+        locations = collection_locations.find().sort([('locationId', pymongo.ASCENDING)])
         return dumps(locations)
     else:
         if type(request.json) is dict:
