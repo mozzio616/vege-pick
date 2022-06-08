@@ -1,13 +1,16 @@
 from functools import wraps
+from turtle import dot
 from typing import Dict
 from dotenv import load_dotenv
 import os, json
 from six.moves.urllib.request import urlopen
 from flask import request, _request_ctx_stack, Blueprint
 from jose import jwt
+from dotenv import load_dotenv
 
 api_auth = Blueprint('api_auth', __name__)
 
+load_dotenv()
 AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
 API_IDENTIFIER = os.getenv('API_IDENTIFIER')
 ALGORITHMS = ["RS256"]

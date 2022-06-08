@@ -4,7 +4,7 @@ from db import db
 import pymongo
 from auth import requires_auth
 from flask_cors import cross_origin
-
+from dotenv import load_dotenv
 api_locations = Blueprint('api_locations', __name__)
 
 collection_locations = db.locations
@@ -48,13 +48,14 @@ def location(locationId):
 def location_lockers(locationId):
     if request.method == 'GET':
         lockers = collection_lockers.find({'locationId': locationId}).sort([('lockerNo', pymongo.ASCENDING)])
+        items = list(collection_items.find().sort([('itemId', pymongo.ASCENDING)]))
         res = []
         for locker in lockers:
-            item = collection_items.find_one({'itemId': locker['itemId']})
-            locker['itemName'] = item['itemName']
-            locker['itemDescription'] = item['itemDescription']
-            locker['itemPrice'] = item['itemPrice']
-            locker['itemImg'] = item['itemImg']
+            idx = next((i for i, x in enumerate(items) if x["itemId"] == locker['itemId']), None)
+            locker['itemName'] = items[idx]['itemName']
+            locker['itemDescription'] = items[idx]['itemDescription']
+            locker['itemPrice'] = items[idx]['itemPrice']
+            locker['itemImg'] = items[idx]['itemImg']
             res.append(locker)
         return dumps(res)
     elif request.method == 'PUT':
