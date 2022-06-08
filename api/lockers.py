@@ -4,6 +4,7 @@ from db import db
 
 api_lockers = Blueprint('api_lockers', __name__)
 
+collection_locations = db.locations
 collection_lockers = db.lockers
 collection_items = db.items
 
@@ -24,17 +25,27 @@ def lockers():
 def locker(lockerId):
     locker = collection_lockers.find_one({'lockerId': lockerId})
     if locker is None:
-        return '', 404
+        return {'code': 'locker_not_found', 'description': 'Locker not found'}, 404
     else:
-        item = collection_items.find_one({'itemId': locker['itemId']})
-        if item is None:
-            return '', 404
+        locationId = locker['locationId']
+        location = collection_locations.find_one({'locationId': locationId})
+        if location is None:
+            return {'code': 'location_not_found', 'description': 'Location not found'}, 404
         else:
-            locker['itemName'] = item['itemName']
-            locker['itemDescripton'] = item['itemDescription']
-            locker['itemPrice'] = item['itemPrice']
-            locker['itemImg'] = item['itemImg']
-            return dumps(locker)
+            item = collection_items.find_one({'itemId': locker['itemId']})
+            if item is None:
+                return {'code': 'item_not_found', 'description': 'item not found'}, 404
+            else:
+                locker['locationNameJp'] = location['locationNameJp']
+                locker['locationNameEn'] = location['locationNameEn']
+                locker['lat'] = location['lat']
+                locker['lng'] = location['lng']
+                locker['icon'] = location['icon']
+                locker['itemName'] = item['itemName']
+                locker['itemDescripton'] = item['itemDescription']
+                locker['itemPrice'] = item['itemPrice']
+                locker['itemImg'] = item['itemImg']
+                return dumps(locker)
 
 @api_lockers.route('/api/lockers/<lockerId>/status', methods=['GET', 'PUT'])
 def locker_status(lockerId):
