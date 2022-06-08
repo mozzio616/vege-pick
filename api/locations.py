@@ -47,11 +47,17 @@ def location(locationId):
 @requires_auth
 def location_lockers(locationId):
     if request.method == 'GET':
+        location = collection_locations.find_one({'locationId': locationId})
         lockers = collection_lockers.find({'locationId': locationId}).sort([('lockerNo', pymongo.ASCENDING)])
         items = list(collection_items.find().sort([('itemId', pymongo.ASCENDING)]))
         res = []
         for locker in lockers:
             idx = next((i for i, x in enumerate(items) if x["itemId"] == locker['itemId']), None)
+            locker['locationNameJp'] = location['locationNameJp']
+            locker['locationNameEn'] = location['locationNameEn']
+            locker['lat'] = location['lat']
+            locker['lng'] = location['lng']
+            locker['icon'] = location['icon']
             locker['itemName'] = items[idx]['itemName']
             locker['itemDescription'] = items[idx]['itemDescription']
             locker['itemPrice'] = items[idx]['itemPrice']
