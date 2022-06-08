@@ -1,5 +1,4 @@
 from functools import wraps
-from turtle import dot
 from typing import Dict
 from dotenv import load_dotenv
 import os, json
