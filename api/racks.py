@@ -16,6 +16,16 @@ collection_items = db.items
 def racks():
     if request.method == 'GET':
         searchKey = request.args.get('searchKey')
+        if request.args.get('limit') is None:
+            limit = 3
+        else:
+            limit = int(request.args.get('limit'))
+        if request.args.get('page') is None:
+            page = 1
+        else:
+            page = int(request.args.get('page'))
+        skip = limit * (page - 1)
+
         if searchKey is None:
 
             pipe = [
@@ -47,6 +57,12 @@ def racks():
                     '$sort': {
                         'rackId': 1
                     }
+                },
+                {
+                    '$skip': skip
+                },
+                {
+                    '$limit': limit
                 }
             ]
 
