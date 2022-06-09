@@ -17,7 +17,41 @@ def racks():
     if request.method == 'GET':
         searchKey = request.args.get('searchKey')
         if searchKey is None:
-            racks = collection_racks.find().sort([('rackId', pymongo.ASCENDING)])
+
+            pipe = [
+                {
+                    '$lookup': {
+                        'from': 'locations',
+                        'localField': 'locationId',
+                        'foreignField': 'locationId',
+                        'as': 'location'
+                    }
+                },
+                {
+                    '$unwind': '$location'
+                },
+                {
+                    '$project': {
+                        '_id': 0,
+                        'rackId': 1,
+                        'lockerIds': 1,
+                        'location.locationId': 1,
+                        'location.locationNameJp': 1,
+                        'location.locationNameEn': 1,
+                        'location.lat': 1,
+                        'location.lng': 1,
+                        'location.icon': 1
+                },
+                },
+                {
+                    '$sort': {
+                        'rackId': 1
+                    }
+                }
+            ]
+
+            racks = collection_racks.aggregate(pipeline=pipe)
+            #racks = collection_racks.find().sort([('rackId', pymongo.ASCENDING)])
         else:
             locations = collection_locations.find({'$or':[{'locationNameJp': {'$regex': searchKey}}, {'locationNameEn': {'$regex': searchKey}}]})
             cnt = 0
