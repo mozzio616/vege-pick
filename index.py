@@ -25,6 +25,9 @@ app.register_blueprint(page_code)
 from api.locations import api_locations
 app.register_blueprint(api_locations)
 
+from api.racks import api_racks
+app.register_blueprint(api_racks)
+
 from api.lockers import api_lockers
 app.register_blueprint(api_lockers)
 

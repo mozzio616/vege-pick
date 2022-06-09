@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 api_locations = Blueprint('api_locations', __name__)
 
 collection_locations = db.locations
+collection_racks = db.racks
 collection_lockers = db.lockers
 collection_items = db.items
 
@@ -40,6 +41,56 @@ def location(locationId):
     else:
         res = collection_locations.delete_one({'locationId': locationId})
         return {'deleted_count': res.deleted_count}
+
+@api_locations.route('/api/locations/<locationId>/racks')
+def location_racks(locationId):
+    res = collection_racks.find({'locationId': locationId})
+    return dumps(res)
+
+@api_locations.route('/api/locations/<locationId>/racks/<rackId>', methods=['GET', 'POST', 'DELETE'])
+def location_rack(locationId, rackId):
+    if request.method == 'GET':
+        res = collection_racks.find_one({'rackId': rackId, 'locationId': locationId})
+        if res is None:
+            return '', 404
+        else:
+            return dumps(res)
+    elif request.method == 'POST':
+        res = collection_racks.find_one({'rackId': rackId})
+        if res is None:
+            return {'code': 'rack_not_found', 'description': 'Rack not found'}, 404
+        elif res['locationId'] is not None:
+            return {'code': 'rack_already_in_use', 'description': 'Rack already in use'}, 400
+        else:
+            numNewLockers = len(res['lockerIds'])
+            res_lockers = collection_lockers.find({'locationId': locationId})
+            res_racks = collection_racks.update_one({'rackId': rackId}, {'$set': {'locationId': locationId}})
+            if request.json['startLockerNo'] is None:
+                res_lockers = collection_lockers.update_many({'rackId': rackId, 'lockerId': res['lockerIds'][cnt]}, {'$set': {'locationId': locationId, 'lockerNo': None}})
+            else:
+                cnt = 0
+                while cnt < numNewLockers:
+                    res_lockers = collection_lockers.update_one({'rackId': rackId, 'lockerId': res['lockerIds'][cnt]}, {'$set': {'locationId': locationId, 'lockerNo': request.json['startLockerNo'] + cnt}})
+                    cnt = cnt + 1
+                response = { 'modified_count': res_racks.modified_count}
+            return dumps(response)
+    else:
+        res_racks = collection_racks.find_one({'rackId': rackId, 'locationId': locationId})
+        if res_racks is None:
+            return {'code': 'rack_not_found', 'description': 'Rack not found'}
+        else:
+            numLockers = len(res_racks['lockerIds'])
+            res_lockers = collection_lockers.update_many({'rackId': rackId, 'locationId': locationId}, {'$set': {'locationId': None, 'lockerNo': None}})
+            if res_lockers.modified_count != numLockers:
+                return {'code': 'mismatch', 'description': 'Modified count is not equal to num of lockers'}, 500
+            else:
+                res_racks = collection_racks.update_one({'rackId': rackId, 'locationId': locationId}, {'$set': {'locationId': None}})
+                if res_racks.modified_count == 1:
+                    return {'modified_rack': res_racks.modified_count, 'modified_lockders': res_lockers.modified_count}
+                elif res_racks.modified_count == 0 :
+                    return {'code': 'rack_not_found', 'description': 'Rack not deleted'}, 404
+                else:
+                    return {'code': 'unknown_error', 'description': str(res_racks.modified_count) + ' racks deleted'}, 500
 
 @api_locations.route('/api/locations/<locationId>/lockers', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @cross_origin(headers=["Content-Type", "Authorization"])
