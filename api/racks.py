@@ -38,7 +38,10 @@ def racks():
                     }
                 },
                 {
-                    '$unwind': '$location'
+                    '$unwind': {
+                        'path': '$location',
+                        'preserveNullAndEmptyArrays': True
+                    }
                 },
                 {
                     '$project': {
