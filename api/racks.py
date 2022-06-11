@@ -105,6 +105,7 @@ def racks():
             'current_page': current_page,
             'previous_page': previous_page,
             'next_page': next_page,
+            'last_page': last_page,
             'racks': racks
         }
         return dumps(response)
