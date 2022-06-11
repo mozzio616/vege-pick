@@ -5,6 +5,8 @@ import pymongo
 from auth import requires_auth
 from flask_cors import cross_origin
 from dotenv import load_dotenv
+import math
+
 api_racks = Blueprint('api_racks', __name__)
 
 collection_locations = db.locations
@@ -15,6 +17,9 @@ collection_items = db.items
 @api_racks.route('/api/racks', methods=['GET', 'POST'])
 def racks():
     if request.method == 'GET':
+        res_total_racks = list(collection_racks.find())
+        num_total_racks = len(res_total_racks)
+
         searchKey = request.args.get('searchKey')
         if request.args.get('limit') is None:
             limit = 3
@@ -26,6 +31,17 @@ def racks():
             page = int(request.args.get('page'))
         skip = limit * (page - 1)
 
+        last_page = math.ceil(num_total_racks/limit)
+        current_page = page
+        if page == 1:
+            previous_page = None
+        else:
+            previous_page = page - 1
+        if page == last_page:
+            next_page = None
+        else:
+            next_page = page + 1
+        
         if searchKey is None:
 
             pipe = [
@@ -71,7 +87,7 @@ def racks():
 
             racks = collection_racks.aggregate(pipeline=pipe)
             #racks = collection_racks.find().sort([('rackId', pymongo.ASCENDING)])
-        else:
+        else: # currently not work
             locations = collection_locations.find({'$or':[{'locationNameJp': {'$regex': searchKey}}, {'locationNameEn': {'$regex': searchKey}}]})
             cnt = 0
             conds = []
@@ -84,7 +100,14 @@ def racks():
                 racks = collection_racks.find({'$or': conds}).sort([('rackId', pymongo.ASCENDING)])
             else:
                 racks = []
-        return dumps(racks)
+        
+        response = {
+            'current_page': current_page,
+            'previous_page': previous_page,
+            'next_page': next_page,
+            'racks': racks
+        }
+        return dumps(response)
     else:
         if type(request.json) is dict:
             rackId = request.json['rackId']
