@@ -38,7 +38,7 @@ def locations():
 
         locations = collection_locations.find({'$or':[{'locationNameJp': {'$regex': searchKey}}, {'locationNameEn': {'$regex': searchKey}}]}).sort([('locationId', pymongo.ASCENDING)]).skip(skip).limit(limit) 
         response = {
-            'crrent_page': page,
+            'current_page': page,
             'last_page': last_page,
             'locations': locations
         }
