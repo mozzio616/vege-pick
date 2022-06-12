@@ -5,6 +5,7 @@ import pymongo
 from auth import requires_auth
 from flask_cors import cross_origin
 from dotenv import load_dotenv
+import math
 api_locations = Blueprint('api_locations', __name__)
 
 collection_locations = db.locations
@@ -15,8 +16,33 @@ collection_items = db.items
 @api_locations.route('/api/locations', methods=['GET', 'POST'])
 def locations():
     if request.method == 'GET':
-        locations = collection_locations.find().sort([('locationId', pymongo.ASCENDING)])
-        return dumps(locations)
+
+        if request.args.get('searchKey') is None:
+            searchKey = ''
+        else:
+            searchKey = request.args.get('searchKey')
+        if request.args.get('limit') is None:
+            limit = 3
+        else:
+            limit = int(request.args.get('limit'))
+        if request.args.get('page') is None:
+            page = 1
+        else:
+            page = int(request.args.get('page'))
+
+        res_total_locations = list(collection_locations.find({'$or':[{'locationNameJp': {'$regex': searchKey}}, {'locationNameEn': {'$regex': searchKey}}]}))
+        num_total_locations = len(res_total_locations)
+
+        skip = limit * (page - 1)  
+        last_page = math.ceil(num_total_locations/limit)
+
+        locations = collection_locations.find({'$or':[{'locationNameJp': {'$regex': searchKey}}, {'locationNameEn': {'$regex': searchKey}}]}).sort([('locationId', pymongo.ASCENDING)]).skip(skip).limit(limit) 
+        response = {
+            'crrent_page': page,
+            'last_page': last_page,
+            'locations': locations
+        }
+        return dumps(response)
     else:
         if type(request.json) is dict:
             res = collection_locations.insert_one(request.json)
