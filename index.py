@@ -46,5 +46,23 @@ app.register_blueprint(api_am_location_lockers)
 from api.private_hello import api_hello
 app.register_blueprint(api_hello)
 
+from api.v1.public.locations.locations import v1_locations
+app.register_blueprint(v1_locations)
+
+from api.v1.public.locations.location import v1_location
+app.register_blueprint(v1_location)
+
+from api.v1.public.locations.racks import v1_racks
+app.register_blueprint(v1_racks)
+
+from api.v1.public.locations.rack import v1_rack
+app.register_blueprint(v1_rack)
+
+from api.v1.public.locations.lockers import v1_lockers
+app.register_blueprint(v1_lockers)
+
+from api.v1.public.payments.payments import v1_payments
+app.register_blueprint(v1_payments)
+
 if __name__ == '__main__':
     app.run()

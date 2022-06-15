@@ -79,11 +79,11 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          {{ location.locationNameEn }}
+          {{ location.location.locationNameEn }}
         </h2>
         <br>
         <h4>
-          {{ location.locationNameJp }}
+          {{ location.location.locationNameJp }}
         </h4>
       </div>
 
@@ -94,8 +94,8 @@
 
       <div class="filters-content">
         <div class="row grid">
-          {% for item in items %}
-          {% if item.isAvailable == True %}
+          {% for locker in lockers %}
+          {% if locker.locker.isAvailable == True %}
           <div class="col-sm-6 col-lg-4 all available">
           {% else %}
           <div class="col-sm-6 col-lg-4 all">
@@ -103,21 +103,21 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="../static/images/{{ item.itemImg }}" alt="">
+                  <img src="../static/images/{{ locker.locker.item.itemImg }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
-                    {{ item.itemName }}
+                    {{ locker.locker.item.itemName }}
                   </h5>
                   <p>
-                    ロッカー番号：{{ item.lockerNo }}<br>{{ item.itemDescription }}
+                    ロッカー番号：{{ locker.locker.lockerNo }}<br>{{ locker.locker.item.itemDescription }}
                   </p>
                   <div class="options">
                     <h6>
-                      &yen{{ item.itemPrice }}
+                      &yen{{ locker.locker.item.itemPrice }}
                     </h6>
-                    {% if item.isAvailable == True %}
-                    <a href="{{ url_for('page_code.create_code') }}?locationId={{ location.locationId }}&lockerId={{ item.lockerId }}">
+                    {% if locker.locker.isAvailable == True %}
+                    <a href="{{ url_for('page_code.create_code') }}?locationId={{ location.location.locationId }}&lockerId={{ locker.locker.lockerId }}">
                       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                         <g>
                           <g>
