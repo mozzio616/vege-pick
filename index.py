@@ -40,9 +40,6 @@ app.register_blueprint(api_payments)
 from api.sales import api_sales
 app.register_blueprint(api_sales)
 
-from api.am.locations.lockers import api_am_location_lockers
-app.register_blueprint(api_am_location_lockers)
-
 from api.private_hello import api_hello
 app.register_blueprint(api_hello)
 
