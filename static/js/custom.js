@@ -42,10 +42,10 @@ var infoWindow = [];
 $(function () {
     $.ajax({
         type: "GET",
-        url: "/api/locations",
+        url: "/api/locations?limit=1000",
         dataType: "json",
         success: function (data) {
-            markerData = data;
+            markerData = data['locations'];
             myMap(markerData);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {

@@ -79,6 +79,7 @@ def requires_auth(func):
         token = get_token_auth_header()
         jsonurl = urlopen("https://" + AUTH0_DOMAIN + "/.well-known/jwks.json")
         jwks = json.loads(jsonurl.read())
+        print(jwks)
         try:
             unverified_header = jwt.get_unverified_header(token)
         except jwt.JWTError as jwt_error:
