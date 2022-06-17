@@ -43,6 +43,9 @@ app.register_blueprint(api_sales)
 from api.private_hello import api_hello
 app.register_blueprint(api_hello)
 
+from api.private import api_private
+app.register_blueprint(api_private)
+
 from api.v1.public.locations.locations import v1_locations
 app.register_blueprint(v1_locations)
 
