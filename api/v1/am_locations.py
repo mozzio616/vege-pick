@@ -1,5 +1,6 @@
-import os, sys
 import math
+import os
+import urllib.parse
 import pymongo
 from bson.json_util import dumps
 from datetime import datetime
@@ -26,8 +27,8 @@ v1_am_locations = Blueprint('v1_am_locations', __name__, url_prefix='/api/v1')
 def locations(user_id):
     if requires_scope('read:am_locations') or requires_scope('read:locations'):
         if requires_scope('read:locations') is False:
-            if user_id != _request_ctx_stack.top.current_user['sub']:
-                print(request.remote_addr + ' - - [' + datetime.now().strftime('%d/%b/%Y %H:%M:%S') + '] Invalid user ID request. token->' + _request_ctx_stack.top.current_user['sub'] + ' request->' + user_id, file=sys.stderr)
+            if urllib.parse.unquote(user_id) != _request_ctx_stack.top.current_user['sub']:
+                print(request.remote_addr + ' - - [' + datetime.now().strftime('%d/%b/%Y %H:%M:%S') + '] Invalid user ID request. token->' + _request_ctx_stack.top.current_user['sub'] + ' request->' + user_id)
                 raise AuthError({
                     "code": "Unauthorized",
                     "description": "You don't have access to this resource"
@@ -49,7 +50,7 @@ def locations(user_id):
 
         res_all = col_locations.find({
             '$and': [
-                {'ams': ['auth0|62a9170cbac1fc561b2ecfd5']},
+                {'ams': [user_id]},
                 {
                     '$or': [
                         {'locationNameJp': {'$regex': searchKey}},
