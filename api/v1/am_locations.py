@@ -50,7 +50,7 @@ def locations(user_id):
 
         res_all = col_locations.find({
             '$and': [
-                {'ams': [user_id]},
+                {'ams': [urllib.parse.unquote(user_id)]},
                 {
                     '$or': [
                         {'locationNameJp': {'$regex': searchKey}},
