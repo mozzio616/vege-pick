@@ -25,9 +25,10 @@ v1_am_locations = Blueprint('v1_am_locations', __name__, url_prefix='/api/v1')
 @cross_origin(headers=["Access-Control-Allow-Origin", "http://localhost:3000"])
 @requires_auth
 def locations(user_id):
+    user_id = urllib.parse.unquote(user_id)
     if requires_scope('read:am_locations') or requires_scope('read:locations'):
         if requires_scope('read:locations') is False:
-            if urllib.parse.unquote(user_id) != _request_ctx_stack.top.current_user['sub']:
+            if user_id != _request_ctx_stack.top.current_user['sub']:
                 print(request.remote_addr + ' - - [' + datetime.now().strftime('%d/%b/%Y %H:%M:%S') + '] Invalid user ID request. token->' + _request_ctx_stack.top.current_user['sub'] + ' request->' + user_id)
                 raise AuthError({
                     "code": "Unauthorized",
@@ -47,10 +48,10 @@ def locations(user_id):
             page = 1
         else:
             page = int(request.args.get('page'))
-
+        print('for debug: ' + user_id)
         res_all = col_locations.find({
             '$and': [
-                {'ams': [urllib.parse.unquote(user_id)]},
+                {'ams': [user_id]},
                 {
                     '$or': [
                         {'locationNameJp': {'$regex': searchKey}},
