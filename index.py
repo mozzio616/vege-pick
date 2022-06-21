@@ -67,5 +67,8 @@ app.register_blueprint(v1_payments)
 from api.v1.am_locations import v1_am_locations
 app.register_blueprint(v1_am_locations)
 
+from api.v1.am_location_lockers import v1_am_location_lockers
+app.register_blueprint(v1_am_location_lockers)
+
 if __name__ == '__main__':
     app.run()
