@@ -138,120 +138,123 @@ def location_lockers(user_id, locationId):
         ]
 
         res_all = list(col_locations.aggregate(pipeline=pipe))
-        num = len(res_all[0]['lockers'])
-        skip = limit * (page -1)
-        last_page = math.ceil(num/limit)
-
-        pipe = [
-            {
-                '$match': {
-                    '$and': [
-                        {'locationId': locationId},
-                        {'ams': [user_id]}
-                    ]
-                }
-            },
-            {
-                '$lookup': {
-                    'from': 'racks',
-                    'localField': 'locationId',
-                    'foreignField': 'locationId',
-                    'as': 'rack'
-                }
-            },
-            {
-                '$unwind': {
-                    'path': '$rack',
-                    'preserveNullAndEmptyArrays': True
-                }
-            },
-            {
-                '$lookup': {
-                    'from': 'lockers',
-                    'localField': 'rack.rackId',
-                    'foreignField': 'rackId',
-                    'as': 'rack.locker'
-                }
-            },
-            {
-                '$unwind': {
-                    'path': '$rack.locker',
-                    'preserveNullAndEmptyArrays': True
-                }
-            },
-            {
-                '$lookup': {
-                    'from': 'items',
-                    'localField': 'rack.locker.itemId',
-                    'foreignField': 'itemId',
-                    'as': 'rack.locker.item'
-                }
-            },
-            {
-                '$unwind': {
-                    'path': '$rack.locker.item',
-                    'preserveNullAndEmptyArrays': True
-                }
-            },
-            {
-                '$project': {
-                    '_id': 0,
-                    'rack._id': 0,
-                    'rack.locationId': 0,
-                    'rack.lockerIds': 0,
-                    'rack.locker._id': 0,
-                    'rack.locker.locationId': 0,
-                    'rack.locker.rackId': 0,
-                    'rack.locker.locationId': 0,
-                    'rack.locker.itemId': 0,
-                    'rack.locker.item._id': 0
-                },
-            },
-            {
-                '$sort': {
-                    'locationId': 1,
-                    'rack.rackId': 1,
-                    'rack.locker.lockerId': 1
-                }
-            },
-            {
-                '$skip': skip
-            },
-            {
-                '$limit': limit
-            },
-            {
-                '$group': {
-                    '_id': {
-                        'locationId': '$locationId',
-                        'locationNameJp': '$locationNameJp',
-                        'locationNameEn': '$locationNameEn',
-                        'lat': '$lat',
-                        'lng': '$lng',
-                        'icon': '$icon'
-                    },
-                    'lockers': {
-                        '$push': '$rack',
-                    }
-
-                }
-            }
-        ]
-
-        res = list(col_locations.aggregate(pipeline=pipe))
-
-        if len(res) == 0:
-            return {'code': 'invalid_location_id', 'description': 'Invalid locationID'}, 404
+        if len(res_all) == 0:
+            return {'code': 'not_found', 'decsription': 'Location not found'}, 404
         else:
-            response = {}
-            response['current_page'] = page
-            response['last_page'] = last_page
-            response['location'] = res[0]['_id']
-            if res[0]['lockers'][0]['locker'] == {}:
-                response['lockers'] = []
+            num = len(res_all[0]['lockers'])
+            skip = limit * (page -1)
+            last_page = math.ceil(num/limit)
+
+            pipe = [
+                {
+                    '$match': {
+                        '$and': [
+                            {'locationId': locationId},
+                            {'ams': [user_id]}
+                        ]
+                    }
+                },
+                {
+                    '$lookup': {
+                        'from': 'racks',
+                        'localField': 'locationId',
+                        'foreignField': 'locationId',
+                        'as': 'rack'
+                    }
+                },
+                {
+                    '$unwind': {
+                        'path': '$rack',
+                        'preserveNullAndEmptyArrays': True
+                    }
+                },
+                {
+                    '$lookup': {
+                        'from': 'lockers',
+                        'localField': 'rack.rackId',
+                        'foreignField': 'rackId',
+                        'as': 'rack.locker'
+                    }
+                },
+                {
+                    '$unwind': {
+                        'path': '$rack.locker',
+                        'preserveNullAndEmptyArrays': True
+                    }
+                },
+                {
+                    '$lookup': {
+                        'from': 'items',
+                        'localField': 'rack.locker.itemId',
+                        'foreignField': 'itemId',
+                        'as': 'rack.locker.item'
+                    }
+                },
+                {
+                    '$unwind': {
+                        'path': '$rack.locker.item',
+                        'preserveNullAndEmptyArrays': True
+                    }
+                },
+                {
+                    '$project': {
+                        '_id': 0,
+                        'rack._id': 0,
+                        'rack.locationId': 0,
+                        'rack.lockerIds': 0,
+                        'rack.locker._id': 0,
+                        'rack.locker.locationId': 0,
+                        'rack.locker.rackId': 0,
+                        'rack.locker.locationId': 0,
+                        'rack.locker.itemId': 0,
+                        'rack.locker.item._id': 0
+                    },
+                },
+                {
+                    '$sort': {
+                        'locationId': 1,
+                        'rack.rackId': 1,
+                        'rack.locker.lockerId': 1
+                    }
+                },
+                {
+                    '$skip': skip
+                },
+                {
+                    '$limit': limit
+                },
+                {
+                    '$group': {
+                        '_id': {
+                            'locationId': '$locationId',
+                            'locationNameJp': '$locationNameJp',
+                            'locationNameEn': '$locationNameEn',
+                            'lat': '$lat',
+                            'lng': '$lng',
+                            'icon': '$icon'
+                        },
+                        'lockers': {
+                            '$push': '$rack',
+                        }
+
+                    }
+                }
+            ]
+
+            res = list(col_locations.aggregate(pipeline=pipe))
+
+            if len(res) == 0:
+                return {'code': 'invalid_location_id', 'description': 'Invalid locationID'}, 404
             else:
-                response['lockers'] = res[0]['lockers']
-            return dumps(response)
+                response = {}
+                response['current_page'] = page
+                response['last_page'] = last_page
+                response['location'] = res[0]['_id']
+                if res[0]['lockers'][0]['locker'] == {}:
+                    response['lockers'] = []
+                else:
+                    response['lockers'] = res[0]['lockers']
+                return dumps(response)
 
     raise AuthError({
         "code": "Unauthorized",
