@@ -25,7 +25,7 @@ def am_location_locker_stock(userId, locationId, lockerId):
                     print(request.remote_addr + ' - - [' + datetime.now().strftime('%d/%b/%Y %H:%M:%S') + '] Invalid user ID request. token->' + _request_ctx_stack.top.current_user['sub'] + ' request->' + userId)
                     raise AuthError({
                         "code": "Unauthorized",
-                        "description": "You don't have access to this resource"
+                        "description": "You don't have access to this resource (invalid user)"
                     }, 403)
             res_location = col_locations.find_one({
                 '$and': [
@@ -53,7 +53,7 @@ def am_location_locker_stock(userId, locationId, lockerId):
                         return dumps(response)
         raise AuthError({
             "code": "Unauthorized",
-            "description": "You don't have access to this resource"
+            "description": "You don't have access to this resource (invalid scope)"
         }, 403)
 
     else:
