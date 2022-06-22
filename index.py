@@ -76,5 +76,8 @@ app.register_blueprint(v1_am_location_lockers)
 from api.v1.am_location_locker import v1_am_location_locker
 app.register_blueprint(v1_am_location_locker)
 
+from api.v1.am_location_locker_stock import v1_am_location_locker_stock
+app.register_blueprint(v1_am_location_locker_stock)
+
 if __name__ == '__main__':
     app.run()

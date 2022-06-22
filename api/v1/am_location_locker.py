@@ -11,7 +11,7 @@ col_locations = db.locations
 col_lockers = db.lockers
 
 v1_am_location_locker = Blueprint('v1_am_location_locker', __name__, url_prefix='/api/v1')
-@v1_am_location_locker.route('/ams/<user_id>/locations/<locationId>/locker/<lockerId>')
+@v1_am_location_locker.route('/ams/<user_id>/locations/<locationId>/lockers/<lockerId>')
 @cross_origin(headers=["Content-Type", "Authorization"])
 @cross_origin(headers=["Access-Control-Allow-Origin", "http://localhost:3000"])
 @requires_auth
