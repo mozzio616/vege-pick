@@ -48,7 +48,7 @@ def locations(user_id):
             page = 1
         else:
             page = int(request.args.get('page'))
-        print('for debug: ' + user_id)
+
         res_all = col_locations.find({
             '$and': [
                 {'ams': [user_id]},
