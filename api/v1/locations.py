@@ -17,8 +17,8 @@ except:
 
 col_locations = db.locations
 
-v1_locations = Blueprint('v1_locations', __name__, url_prefix='/api/v1/locations')
-@v1_locations.route('', methods=['GET'])
+v1_locations = Blueprint('v1_locations', __name__, url_prefix='/api/v1')
+@v1_locations.route('/locations', methods=['GET', 'POST'])
 @cross_origin(headers=["Content-Type", "Authorization"])
 @cross_origin(headers=["Access-Control-Allow-Origin", "http://localhost:3000"])
 @requires_auth
