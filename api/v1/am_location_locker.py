@@ -29,7 +29,7 @@ def locations(user_id, locationId, lockerId):
         res_location = col_locations.find_one({
             '$and': [
                 { 'locationId': locationId },
-                { 'ams': [ user_id ]}
+                { 'ams': { '$in': [ user_id ] }}
             ]
         }, {'_id': False})
         if res_location is None:

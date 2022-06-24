@@ -30,7 +30,7 @@ def am_location_locker_stock(userId, locationId, lockerId):
             res_location = col_locations.find_one({
                 '$and': [
                     { 'locationId': locationId },
-                    { 'ams': [ userId ]}
+                    { 'ams': { '$in': [ userId ] }}
                 ]
             }, {'_id': False})
             if res_location is None:
@@ -68,7 +68,7 @@ def am_location_locker_stock(userId, locationId, lockerId):
             res_location = col_locations.find_one({
                 '$and': [
                     { 'locationId': locationId },
-                    { 'ams': [ userId ]}
+                    { 'ams': { '$in': [ userId ] }}
                 ]
             }, {'_id': False})
             if res_location is None:

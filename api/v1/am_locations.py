@@ -48,10 +48,10 @@ def locations(user_id):
             page = 1
         else:
             page = int(request.args.get('page'))
-
+        print(user_id)
         res_all = col_locations.find({
             '$and': [
-                {'ams': [user_id]},
+                {'ams': { '$in': [user_id] }},
                 {
                     '$or': [
                         {'locationNameJp': {'$regex': searchKey}},
@@ -68,7 +68,7 @@ def locations(user_id):
 
         locations = col_locations.find({
             '$and': [
-                {'ams': [user_id]},
+                {'ams': { '$in': [user_id] }},
                 {
                     '$or': [
                         {'locationNameJp': {'$regex': searchKey}},

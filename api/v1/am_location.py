@@ -28,7 +28,7 @@ def locations(user_id, locationId):
         res = col_locations.find_one({
             '$and': [
                 { 'locationId': locationId },
-                { 'ams': [ user_id ]}
+                { 'ams': { '$in': [ user_id ] }}
             ]
         }, {'_id': False})
         if res is None:

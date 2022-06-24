@@ -52,7 +52,7 @@ def location_lockers(user_id, locationId):
                 '$match': {
                     '$and': [
                         {'locationId': locationId},
-                        {'ams': [user_id]}
+                        {'ams': {'$in': [user_id]}}
                     ]
                 }
             },
@@ -150,7 +150,7 @@ def location_lockers(user_id, locationId):
                     '$match': {
                         '$and': [
                             {'locationId': locationId},
-                            {'ams': [user_id]}
+                            {'ams': {'$in': [user_id]}}
                         ]
                     }
                 },
