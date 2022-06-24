@@ -32,7 +32,7 @@ def locations():
     if request.method == 'POST':
         if requires_scope('post:locations'):
             if type(request.json) is dict:
-                data = request.json()
+                data = request.json
                 data['locationId'] = new_location_id()
                 res = col_locations.insert_one(data)
                 return dumps(res.inserted_id)
