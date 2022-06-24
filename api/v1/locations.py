@@ -17,6 +17,12 @@ except:
 
 col_locations = db.locations
 
+def new_location_id():
+    res = list(col_locations.find())
+    num = len(res)
+    new_location_id = 'L' + str(num).zfill(8)
+    return new_location_id    
+
 v1_locations = Blueprint('v1_locations', __name__, url_prefix='/api/v1')
 @v1_locations.route('/locations', methods=['GET', 'POST'])
 @cross_origin(headers=["Content-Type", "Authorization"])
@@ -26,7 +32,9 @@ def locations():
     if request.method == 'POST':
         if requires_scope('post:locations'):
             if type(request.json) is dict:
-                res = col_locations.insert_one(request.json)
+                data = request.json()
+                data['locationId'] = new_location_id()
+                res = col_locations.insert_one(data)
                 return dumps(res.inserted_id)
             elif type(request.json) is list:
                 res = col_locations.insert_many(request.json)
