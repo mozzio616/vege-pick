@@ -46,9 +46,6 @@ app.register_blueprint(api_hello)
 from api.private import api_private
 app.register_blueprint(api_private)
 
-from api.v1.public.locations.locations import v1_locations
-app.register_blueprint(v1_locations)
-
 from api.v1.public.locations.location import v1_location
 app.register_blueprint(v1_location)
 
@@ -63,6 +60,10 @@ app.register_blueprint(v1_lockers)
 
 from api.v1.public.payments.payments import v1_payments
 app.register_blueprint(v1_payments)
+
+# for new admin ui
+from api.v1.locations import v1_locations
+app.register_blueprint(v1_locations)
 
 from api.v1.am_locations import v1_am_locations
 app.register_blueprint(v1_am_locations)

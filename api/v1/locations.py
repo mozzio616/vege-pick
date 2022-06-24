@@ -23,7 +23,17 @@ v1_locations = Blueprint('v1_locations', __name__, url_prefix='/api/v1/locations
 @cross_origin(headers=["Access-Control-Allow-Origin", "http://localhost:3000"])
 @requires_auth
 def locations():
-    if request.method == 'GET':
+    if request.method == 'POST':
+        if requires_scope('post:locations'):
+            if type(request.json) is dict:
+                res = col_locations.insert_one(request.json)
+                return dumps(res.inserted_id)
+            elif type(request.json) is list:
+                res = col_locations.insert_many(request.json)
+                return dumps(res.inserted_ids)
+            else:
+                return '', 400
+    else:
         if requires_scope('read:locations'):
             if request.args.get('searchKey') is None:
                 searchKey = ''
