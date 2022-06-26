@@ -17,7 +17,7 @@ def locations(locationId):
     if request.method == 'PATCH':
         if requires_scope('update:locations'):
             data = request.json
-            res = col_locations.update_one({'locationId': locationId}, data)
+            res = col_locations.update_one({'locationId': locationId}, {'$set': data})
             if res.modified_count == 0:
                 return {'code': 'not_found', 'description': 'No update'}, 404
             elif res.modified_count != 1:
