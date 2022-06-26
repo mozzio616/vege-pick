@@ -46,7 +46,7 @@ def am_location_locker_stock(userId, locationId, lockerId):
                     }, {'$set': {'isAvailable': isAvailable}})
                     if res_locker.modified_count == 0:
                         return {'code': 'not_found', 'description': 'No update'}, 404
-                    elif res_locker.acknowledged != 1:
+                    elif res_locker.modified_count != 1:
                         return {'code': 'update_failure', 'description': 'Unknown error occured'}, 500
                     else:
                         response = { 'lockerId': lockerId, 'isAvailable': isAvailable }

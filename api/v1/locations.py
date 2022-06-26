@@ -41,7 +41,6 @@ def locations():
                 return dumps(res.inserted_ids)
             else:
                 return '', 400
-    else:
         if requires_scope('read:locations'):
             if request.args.get('searchKey') is None:
                 searchKey = ''
