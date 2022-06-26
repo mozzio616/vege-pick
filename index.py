@@ -62,6 +62,9 @@ from api.v1.public.payments.payments import v1_payments
 app.register_blueprint(v1_payments)
 
 # for new admin ui
+from api.v1.ams import v1_ams
+app.register_blueprint(v1_ams)
+
 from api.v1.locations import v1_locations
 app.register_blueprint(v1_locations)
 
