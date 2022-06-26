@@ -21,8 +21,8 @@ def am_location_locker_stock(userId, locationId, lockerId):
     if request.method == 'PATCH':
         if requires_scope('update:am_locations') or requires_scope('update:locations'):
             if requires_scope('update:locations') is False:
-                if userId != _request_ctx_stack.top.current_user['sub']:
-                    print(request.remote_addr + ' - - [' + datetime.now().strftime('%d/%b/%Y %H:%M:%S') + '] Invalid user ID request. token->' + _request_ctx_stack.top.current_user['sub'] + ' request->' + userId)
+                if userId != _request_ctx_stack.top.current_user['name']:
+                    print(request.remote_addr + ' - - [' + datetime.now().strftime('%d/%b/%Y %H:%M:%S') + '] Invalid user ID request. token->' + _request_ctx_stack.top.current_user['name'] + ' request->' + userId)
                     raise AuthError({
                         "code": "Unauthorized",
                         "description": "You don't have access to this resource (invalid user)"
@@ -59,8 +59,8 @@ def am_location_locker_stock(userId, locationId, lockerId):
     else:
         if requires_scope('read:am_locations') or requires_scope('read:locations'):
             if requires_scope('read:locations') is False:
-                if userId != _request_ctx_stack.top.current_user['sub']:
-                    print(request.remote_addr + ' - - [' + datetime.now().strftime('%d/%b/%Y %H:%M:%S') + '] Invalid user ID request. token->' + _request_ctx_stack.top.current_user['sub'] + ' request->' + userId)
+                if userId != _request_ctx_stack.top.current_user['name']:
+                    print(request.remote_addr + ' - - [' + datetime.now().strftime('%d/%b/%Y %H:%M:%S') + '] Invalid user ID request. token->' + _request_ctx_stack.top.current_user['name'] + ' request->' + userId)
                     raise AuthError({
                         "code": "Unauthorized",
                         "description": "You don't have access to this resource"

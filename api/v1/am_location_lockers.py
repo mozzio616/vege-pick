@@ -30,8 +30,8 @@ def location_lockers(user_id, locationId):
     user_id = urllib.parse.unquote(user_id)
     if requires_auth('read:am_locations') or requires_scope('read:locations'):
         if requires_scope('read:locations') is False:
-            if user_id != _request_ctx_stack.top.current_user['sub']:
-                print(request.remote_addr + ' - - [' + datetime.now().strftime('%d/%b/%Y %H:%M:%S') + '] Invalid user ID request. token->' + _request_ctx_stack.top.current_user['sub'] + ' request->' + user_id)
+            if user_id != _request_ctx_stack.top.current_user['name']:
+                print(request.remote_addr + ' - - [' + datetime.now().strftime('%d/%b/%Y %H:%M:%S') + '] Invalid user ID request. token->' + _request_ctx_stack.top.current_user['name'] + ' request->' + user_id)
                 raise AuthError({
                     "code": "Unauthorized",
                     "description": "You don't have access to this resource"
