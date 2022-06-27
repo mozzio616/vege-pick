@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_cors import cross_origin
 from bson.json_util import dumps
 from dotenv import load_dotenv
-import math
+import math, os
 
 from db import db
 from auth import requires_auth, requires_scope, AuthError
@@ -25,8 +25,19 @@ def locations(locationId):
 
     if request.method == 'PATCH':
         if requires_scope('update:locations'):
-            data = request.json
-            res = col_locations.update_one({'locationId': locationId}, {'$set': data})
+            if request.json['userId'] is None:
+                return {'code': 'bad_request', 'description': 'userId missing'}, 400
+            else:
+                userId = request.json['userId']
+            res = col_locations.find_one({'locationId': locationId})
+            if res is None:
+                return {'code': 'not_found', 'description': 'Location not found'}, 404
+            try:
+                ams = res['ams']
+            except KeyError:
+                ams = []
+            ams.append(userId)
+            res = col_locations.update_one({'locationId': locationId}, {'$set': {'ams': ams}})
             if res.modified_count == 0:
                 return {'code': 'not_found', 'description': 'No update'}, 404
             elif res.modified_count != 1:

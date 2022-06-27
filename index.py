@@ -71,6 +71,9 @@ app.register_blueprint(v1_location)
 from api.v1.location_ams import v1_location_ams
 app.register_blueprint(v1_location_ams)
 
+from api.v1.location_am import v1_location_am
+app.register_blueprint(v1_location_am)
+
 from api.v1.am_locations import v1_am_locations
 app.register_blueprint(v1_am_locations)
 
