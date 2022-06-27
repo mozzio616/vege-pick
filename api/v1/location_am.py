@@ -3,6 +3,7 @@ from flask_cors import cross_origin
 from bson.json_util import dumps
 from dotenv import load_dotenv
 import math, os
+import urllib.parse
 
 from db import db
 from auth import requires_auth, requires_scope, AuthError
@@ -22,7 +23,7 @@ v1_location_am = Blueprint('v1_location_am', __name__, url_prefix='/api/v1')
 @cross_origin(headers=["Access-Control-Allow-Origin", "http://localhost:3000"])
 @requires_auth
 def locations(locationId, userId):
-
+    userId = urllib.parse.unquote(userId)
     if request.method == 'DELETE':
         if requires_scope('update:locations'):            
             res = col_locations.find_one({'$and': [{'locationId': locationId}, {'ams': {'$in': [userId]}}]})
