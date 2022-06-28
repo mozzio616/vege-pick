@@ -164,7 +164,7 @@ def locations(locationId):
                 response = {}
                 response['current_page'] = page
                 response['last_page'] = last_page
-                if len(res_all[0]) == 0:
+                if len(res[0]) == 0:
                     response['ams'] = []
                 else:
                     response['ams'] = res

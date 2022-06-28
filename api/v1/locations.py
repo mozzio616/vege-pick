@@ -20,7 +20,7 @@ col_locations = db.locations
 def new_location_id():
     res = list(col_locations.find())
     num = len(res)
-    new_location_id = 'L' + str(num).zfill(7)
+    new_location_id = 'L' + str(num+1).zfill(7)
     return new_location_id    
 
 v1_locations = Blueprint('v1_locations', __name__, url_prefix='/api/v1')
