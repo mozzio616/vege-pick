@@ -4,7 +4,7 @@ from db import db
 from auth import requires_auth, requires_scope, AuthError
 from flask_cors import cross_origin
 from dotenv import load_dotenv
-import math, os
+import math, os, re
 
 load_dotenv()
 
@@ -113,9 +113,12 @@ def racks():
                 },
                 {
                     '$group': {
-                        '_id': {
-                            'rackId': '$rackId',
-                            'locationId': '$locationId'
+                        '_id': '$rackId',
+                        'rackId': {
+                            '$addToSet': '$rackId'
+                        },
+                        'locationId': {
+                            '$addToSet': '$locationId'
                         },
                         'lockers': {
                             '$push': {
@@ -128,19 +131,39 @@ def racks():
                     }
                 },
                 {
+                    '$unwind': {
+                        'path': '$rackId',
+                        'preserveNullAndEmptyArrays': True
+                    }
+                },
+                {
+                    '$unwind': {
+                        'path': '$locationId',
+                        'preserveNullAndEmptyArrays': True
+                    }
+                },
+                {
+                    '$project': {
+                        '_id': 0
+                    }
+                },
+                {
                     '$sort': {
-                        '_id.rackId': 1
+                        'rackId': 1
                     }
                 },
             ]
-            if request.args.get('assigned') is not None:
-                if request.args.get('assigned') == 'null':
+            if request.args.get('locationId') is None:
+                pipe = pipe_postfix
+            else:
+                if request.args.get('locationId') == 'null':
                     pipe = [ { '$match': { 'locationId': None }} ]
                     pipe.extend(pipe_postfix)
-                else:
+                elif re.fullmatch(r'^L[0-9]{7}', request.args.get('locationId')) is None:
                     pipe = pipe_postfix
-            else:
-                pipe = pipe_postfix
+                else:
+                    pipe = [ { '$match': { 'locationId': request.args.get('locationId') }} ]
+                    pipe.extend(pipe_postfix)
             res_all = list(col_racks.aggregate(pipeline=pipe))
             num = len(res_all)
             skip = limit * (page - 1)  

@@ -10,9 +10,9 @@ from auth import requires_auth, requires_scope, AuthError
 load_dotenv()
 
 try:
-    LIMIT = int(os.getenv('DEFAULT_LOCATIONS_LIMIT'))
+    LIMIT = int(os.getenv('DEFAULT_LIMIT'))
 except:
-    LIMIT = 5
+    LIMIT = 1000
 
 col_locations = db.locations
 col_racks = db.racks
@@ -101,9 +101,10 @@ def locations(locationId):
             except:
                 page = 1
             # get all data 
+            print(locationId)
             pipe = [
                 {
-                    '$match': { 'locationId': locationId}
+                    '$match': { 'locationId': locationId }
                 },
                 {
                     '$unwind': {
@@ -128,6 +129,12 @@ def locations(locationId):
                 {
                     '$group': {
                         '_id': '$rackId',
+                        'rackId': {
+                            '$addToSet': '$rackId'
+                        },
+                        'locationId': {
+                            '$addToSet': '$locationId'
+                        },
                         'lockers': {
                             '$push': {
                                 'lockerId': '$locker.lockerId',
@@ -139,8 +146,25 @@ def locations(locationId):
                     }
                 },
                 {
+                    '$unwind': {
+                        'path': '$rackId',
+                        'preserveNullAndEmptyArrays': True
+                    }
+                },
+                {
+                    '$unwind': {
+                        'path': '$locationId',
+                        'preserveNullAndEmptyArrays': True
+                    }
+                },
+                {
+                    '$project': {
+                        '_id': 0
+                    }
+                },
+                {
                     '$sort': {
-                        '_id': 1,
+                        'rackId': 1,
                         'lockers.lockerId': 1
                     }
                 }
@@ -153,49 +177,7 @@ def locations(locationId):
             else:
                 last_page = math.ceil(num/limit)
             skip = limit * (page - 1)  
-            pipe = [
-                {
-                    '$match': { 'locationId': locationId}
-                },
-                {
-                    '$unwind': {
-                        'path': '$lockerIds',
-                        'preserveNullAndEmptyArrays': True
-                    }
-                },
-                {
-                    '$lookup': {
-                        'from': 'lockers',
-                        'localField': 'lockerIds',
-                        'foreignField': 'lockerId',
-                        'as': 'locker'
-                    }
-                },
-                {
-                    '$unwind': {
-                        'path': '$locker',
-                        'preserveNullAndEmptyArrays': True
-                    }
-                },
-                {
-                    '$group': {
-                        '_id': '$rackId',
-                        'lockers': {
-                            '$push': {
-                                'lockerId': '$locker.lockerId',
-                                'lockerNo': '$locker.lockerNo',
-                                'itemId': '$locker.itemId',
-                                'isAvailable': '$locker.isAvailable'
-                            }
-                        }
-                    }
-                },
-                {
-                    '$sort': {
-                        '_id': 1,
-                        'lockers.lockerId': 1
-                    }
-                },
+            pipe_paging = [
                 {
                     '$skip': skip
                 },
@@ -203,6 +185,7 @@ def locations(locationId):
                     '$limit': limit
                 }
             ]
+            pipe.extend(pipe_paging)
             res = list(col_racks.aggregate(pipeline=pipe))
             # return response
             response = {}
