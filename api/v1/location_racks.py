@@ -107,6 +107,20 @@ def locations(locationId):
                     '$match': { 'locationId': locationId }
                 },
                 {
+                    '$lookup': {
+                        'from': 'locations',
+                        'localField': 'locationId',
+                        'foreignField': 'locationId',
+                        'as': 'location'
+                    }
+                },
+                {
+                        '$unwind': {
+                        'path': '$location',
+                        'preserveNullAndEmptyArrays': True
+                    }
+                },
+                {
                     '$unwind': {
                         'path': '$lockerIds',
                         'preserveNullAndEmptyArrays': True
@@ -132,8 +146,8 @@ def locations(locationId):
                         'rackId': {
                             '$addToSet': '$rackId'
                         },
-                        'locationId': {
-                            '$addToSet': '$locationId'
+                        'location': {
+                            '$addToSet': '$location'
                         },
                         'lockers': {
                             '$push': {
@@ -153,13 +167,14 @@ def locations(locationId):
                 },
                 {
                     '$unwind': {
-                        'path': '$locationId',
+                        'path': '$location',
                         'preserveNullAndEmptyArrays': True
                     }
                 },
                 {
                     '$project': {
-                        '_id': 0
+                        '_id': 0,
+                        'location._id': 0
                     }
                 },
                 {

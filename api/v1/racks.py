@@ -33,7 +33,7 @@ v1_racks = Blueprint('v1_racks', __name__, url_prefix='/api/v1')
 @v1_racks.route('/racks', methods=['GET', 'POST'])
 @cross_origin(headers=["Content-Type", "Authorization"])
 @cross_origin(headers=["Access-Control-Allow-Origin", "http://localhost:3000"])
-@requires_auth
+#@requires_auth
 def racks():
     if request.method == 'POST':
         if requires_scope('post:racks'):
@@ -86,6 +86,20 @@ def racks():
                 page = 1
             pipe_postfix = [
                 {
+                    '$lookup': {
+                        'from': 'locations',
+                        'localField': 'locationId',
+                        'foreignField': 'locationId',
+                        'as': 'location'
+                    }
+                },
+                {
+                    '$unwind': {
+                        'path': '$location',
+                        'preserveNullAndEmptyArrays': True
+                    }
+                },
+                {
                     '$unwind': {
                         'path': '$lockerIds',
                         'preserveNullAndEmptyArrays': True
@@ -117,8 +131,8 @@ def racks():
                         'rackId': {
                             '$addToSet': '$rackId'
                         },
-                        'locationId': {
-                            '$addToSet': '$locationId'
+                        'location': {
+                            '$addToSet': '$location'
                         },
                         'lockers': {
                             '$push': {
@@ -138,13 +152,14 @@ def racks():
                 },
                 {
                     '$unwind': {
-                        'path': '$locationId',
+                        'path': '$location',
                         'preserveNullAndEmptyArrays': True
                     }
                 },
                 {
                     '$project': {
-                        '_id': 0
+                        '_id': 0,
+                        'location._id': 0
                     }
                 },
                 {
