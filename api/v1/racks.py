@@ -24,10 +24,11 @@ col_lockers = db.lockers
 col_items = db.items
 
 def new_rack_id():
-    res = list(col_racks.find())
-    num = len(res)
-    rack_id = 'R' + str(num+1).zfill(7)
-    return rack_id    
+    res = list(col_racks.find().sort([('rackId', -1)]).limit(1))
+    current_max_rack_id = res[0]['rackId']
+    num = int(current_max_rack_id[1:]) + 1
+    new_rack_id = 'R' + str(num).zfill(7)
+    return new_rack_id    
 
 v1_racks = Blueprint('v1_racks', __name__, url_prefix='/api/v1')
 @v1_racks.route('/racks', methods=['GET', 'POST'])
