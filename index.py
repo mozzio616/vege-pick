@@ -62,6 +62,9 @@ app.register_blueprint(v1_payments)
 from api.v1.users import v1_users
 app.register_blueprint(v1_users)
 
+from api.v1.user import v1_user
+app.register_blueprint(v1_user)
+
 from api.v1.racks import v1_racks
 app.register_blueprint(v1_racks)
 
