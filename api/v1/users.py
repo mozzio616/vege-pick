@@ -38,6 +38,14 @@ def locations():
                     return {'code': 'bad_request', 'description': 'invalid email'}, 400
             except KeyError:
                 return {'code': 'bad_request', 'description': 'email missing'}, 400
+            try:
+                givenName = request.json['givenName']
+            except KeyError:
+                return {'code': 'bad_request', 'description': 'first name missing'}, 400
+            try:
+                familyName = request.json['familyName']
+            except KeyError:
+                return {'code': 'bad_request', 'description': 'last name missing'}, 400
             roles_preset = {'admin', 'am', 'operator'}
             roleIds_dict = {'admin': 'rol_LoUONbA8CLs4N882', 'am': 'rol_451smviuNOkT6C6K'}
             try:
@@ -67,11 +75,14 @@ def locations():
             data = {
                 'email': email,
                 'name': email,
+                'givenName': givenName,
+                'familyName': familyName,
                 'connection': 'Username-Password-Authentication',
                 'password': 'P@ssw0rd',
                 'app_metadata': {
                     'roles': roles
-                }}
+                }
+            }
             res_api = requests.post(url, json=data, headers=headers)
             # create auth0 user (retry)
             if res_api.status_code >= 400:
