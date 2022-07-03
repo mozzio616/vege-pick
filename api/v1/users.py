@@ -138,7 +138,13 @@ def locations():
                 '$and': [
                     { 'roles': { '$in': roles }},
                     { 'userId': { '$nin': excl_users }},
-                    { 'name': { '$regex': name }}
+                    { '$or':
+                        [
+                            {'name': { '$regex': name }},
+                            {'givenName': { '$regex': name}},
+                            {'familyName': { '$regex': name}}
+                        ]
+                    }
                 ]
             }, {'_id': 0}))
 
@@ -151,7 +157,13 @@ def locations():
                 '$and': [
                     { 'roles': { '$in': roles }},
                     { 'userId': { '$nin': excl_users }},
-                    { 'name': { '$regex': name }}
+                    { '$or':
+                        [
+                            {'name': { '$regex': name }},
+                            {'givenName': { '$regex': name}},
+                            {'familyName': { '$regex': name}}
+                        ]
+                    }
                 ]
             }, {'_id': 0}).sort([('name', pymongo.ASCENDING)]).skip(skip).limit(limit))
 
