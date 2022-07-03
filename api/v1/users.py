@@ -75,8 +75,6 @@ def locations():
             data = {
                 'email': email,
                 'name': email,
-                'givenName': givenName,
-                'familyName': familyName,
                 'connection': 'Username-Password-Authentication',
                 'password': 'P@ssw0rd',
                 'app_metadata': {
@@ -105,7 +103,7 @@ def locations():
                 if res_api.status_code >= 400:
                     return res_api.json(), res_api.status_code
             # create user in database
-            res = col_users.insert_one({'name': email, 'roles': roles, 'userId': user_id})
+            res = col_users.insert_one({'name': email, 'roles': roles, 'userId': user_id, 'givenName': givenName, 'familyName': familyName})
             if res.acknowledged is True:
                 print('user added to mongodb: ' + str(res.inserted_id))
             else:
