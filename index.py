@@ -86,6 +86,9 @@ app.register_blueprint(v1_location_racks)
 from api.v1.location_rack import v1_location_rack
 app.register_blueprint(v1_location_rack)
 
+from api.v1.items import v1_items
+app.register_blueprint(v1_items)
+
 from api.v1.am_locations import v1_am_locations
 app.register_blueprint(v1_am_locations)
 
