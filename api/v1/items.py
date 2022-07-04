@@ -124,7 +124,7 @@ def locations():
                         ]
                     }
                 ]
-            }, {'_id': 0}).sort([('name', 1)]).skip(skip).limit(limit))
+            }, {'_id': 0}).sort([('itemId', 1)]).skip(skip).limit(limit))
 
             response = {
                 'current_page': page,
