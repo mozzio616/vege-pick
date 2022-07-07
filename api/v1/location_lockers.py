@@ -39,7 +39,11 @@ def locations(locationId):
         except:
             page = 1
         # get all data 
-        print(locationId)
+
+        res_location = col_locations.find_one({'locationId': locationId}, {'_id': False})
+        if res_location is None:
+            return {'code': 'not_found', 'description': 'Location not found'}, 404
+
         pipe = [
             {
                 '$match': { 'locationId': locationId }
@@ -59,19 +63,6 @@ def locations(locationId):
                 }
             },
             {
-                '$lookup': {
-                    'from': 'locations',
-                    'localField': 'locationId',
-                    'foreignField': 'locationId',
-                    'as': 'location'
-                }
-            },
-            {
-                '$unwind': {
-                    'path': '$location',
-                    'preserveNullAndEmptyArrays': True
-                }
-            },            {
                 '$project': {
                     '_id': 0,
                     'itemId': 0,
@@ -108,6 +99,7 @@ def locations(locationId):
         response = {}
         response['current_page'] = page
         response['last_page'] = last_page
+        response['location'] = res_location
         if len(res) == 0:
             response['lockers'] = []
         else:
