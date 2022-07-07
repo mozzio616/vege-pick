@@ -52,8 +52,8 @@ app.register_blueprint(api_private)
 #from api.v1.public.locations.rack import v1_rack
 #app.register_blueprint(v1_rack)
 
-from api.v1.public.locations.lockers import v1_lockers
-app.register_blueprint(v1_lockers)
+#from api.v1.public.locations.lockers import v1_lockers
+#app.register_blueprint(v1_lockers)
 
 from api.v1.public.payments.payments import v1_payments
 app.register_blueprint(v1_payments)
@@ -85,6 +85,12 @@ app.register_blueprint(v1_location_racks)
 
 from api.v1.location_rack import v1_location_rack
 app.register_blueprint(v1_location_rack)
+
+from api.v1.location_lockers import v1_location_lockers
+app.register_blueprint(v1_location_lockers)
+
+from api.v1.location_locker import v1_location_locker
+app.register_blueprint(v1_location_locker)
 
 from api.v1.items import v1_items
 app.register_blueprint(v1_items)
